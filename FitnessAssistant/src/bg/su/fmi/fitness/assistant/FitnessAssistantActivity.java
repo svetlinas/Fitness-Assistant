@@ -10,6 +10,7 @@ public class FitnessAssistantActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
+        //Check commit by sefo
         TextView textView = new TextView(this);
         textView.setText(R.string.app_name);
         
