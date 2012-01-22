@@ -11,6 +11,7 @@ public class FitnessAssistantActivity extends Activity {
         super.onCreate(savedInstanceState);
         
         //Check commit by sefo
+        //commit by vel
         TextView textView = new TextView(this);
         textView.setText(R.string.app_name);
         
