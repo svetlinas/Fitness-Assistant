@@ -1,8 +1,12 @@
 package bg.su.fmi.fitness.assistant;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
 
 public class FitnessAssistantActivity extends Activity {
     /** Called when the activity is first created. */
@@ -10,9 +14,45 @@ public class FitnessAssistantActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        TextView textView = new TextView(this);
-        textView.setText(R.string.app_name);
-        
-        setContentView(textView);
+        setContentView(R.layout.home);
+    }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+    	MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.home_menu, menu);
+        return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+    	if (item.getItemId() == R.id.search) {
+			openSearchActivity();
+			return true;
+		} else {
+			return super.onOptionsItemSelected(item);
+		}
+    }
+    
+    private void openSearchActivity()
+    {
+    	Intent intent = new Intent(this, SearchActivity.class);
+    	startActivity(intent);
+    }
+    
+    public void openWorkoutActivity(View view)
+    {
+//    	TODO
+//    	Intent intent = new Intent(this, WorkoutsActivity.class);
+//    	startActivity(intent);
+    	System.out.println("workout");
+    }
+    
+    public void openDietActivity(View view)
+    {
+//    	TODO
+//    	Intent intent = new Intent(this, DietActivity.class);
+//    	startActivity(intent);
+    	System.out.println("diet");
     }
 }
