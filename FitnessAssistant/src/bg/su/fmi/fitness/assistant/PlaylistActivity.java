@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import bg.su.fmi.fitness.assistant.PlaylistAdapter;
 import bg.su.fmi.fitness.assistant.TrackInfo;
 
+import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.ContentResolver;
 import android.database.Cursor;
@@ -38,6 +39,12 @@ public class PlaylistActivity extends ListActivity {
 		};
 		cursor = resolver.query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
 				projection, null, null, null);
+		if (cursor == null) {
+			Dialog noCardDialog = new Dialog(this);
+			noCardDialog.setTitle("No external cd card !!!");
+			noCardDialog.show();
+			return tracks;
+		}
 		cursor.moveToFirst();
 		while (!cursor.isLast()) {
 			path = cursor.getString(0);
