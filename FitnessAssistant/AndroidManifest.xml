@@ -19,6 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name="SearchActivity"></activity>
+        <activity android:name="bg.su.fmi.fitness.assistant.activities.PlaylistActivity">
+        </activity>
     </application>
 
 </manifest>
