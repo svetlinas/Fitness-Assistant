@@ -1,4 +1,4 @@
-package bg.su.fmi.fitness.assistant;
+package bg.su.fmi.fitness.assistant.player;
 
 public class TrackInfo {
 	

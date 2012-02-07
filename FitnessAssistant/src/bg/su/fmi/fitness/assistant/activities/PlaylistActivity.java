@@ -1,9 +1,11 @@
-package bg.su.fmi.fitness.assistant;
+package bg.su.fmi.fitness.assistant.activities;
 
 import java.util.ArrayList;
 
-import bg.su.fmi.fitness.assistant.PlaylistAdapter;
-import bg.su.fmi.fitness.assistant.TrackInfo;
+import bg.su.fmi.fitness.assistant.R;
+import bg.su.fmi.fitness.assistant.R.layout;
+import bg.su.fmi.fitness.assistant.player.PlaylistAdapter;
+import bg.su.fmi.fitness.assistant.player.TrackInfo;
 
 import android.app.Dialog;
 import android.app.ListActivity;

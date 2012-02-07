@@ -1,5 +1,10 @@
-package bg.su.fmi.fitness.assistant;
+package bg.su.fmi.fitness.assistant.activities;
 
+import bg.su.fmi.fitness.assistant.R;
+import bg.su.fmi.fitness.assistant.R.id;
+import bg.su.fmi.fitness.assistant.R.layout;
+import bg.su.fmi.fitness.assistant.R.menu;
+import bg.su.fmi.fitness.assistant.player.AudioPlayerController;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;

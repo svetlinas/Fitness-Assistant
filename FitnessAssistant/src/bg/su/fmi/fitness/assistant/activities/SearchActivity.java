@@ -1,5 +1,8 @@
-package bg.su.fmi.fitness.assistant;
+package bg.su.fmi.fitness.assistant.activities;
 
+import bg.su.fmi.fitness.assistant.R;
+import bg.su.fmi.fitness.assistant.R.id;
+import bg.su.fmi.fitness.assistant.R.layout;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;

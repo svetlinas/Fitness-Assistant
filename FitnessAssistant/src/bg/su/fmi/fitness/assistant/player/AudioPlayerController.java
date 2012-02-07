@@ -1,6 +1,6 @@
-package bg.su.fmi.fitness.assistant;
+package bg.su.fmi.fitness.assistant.player;
 
-import bg.su.fmi.fitness.assistant.PlaylistActivity;
+import bg.su.fmi.fitness.assistant.activities.PlaylistActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.media.MediaPlayer;

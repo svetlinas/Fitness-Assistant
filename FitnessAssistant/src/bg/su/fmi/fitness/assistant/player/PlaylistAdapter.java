@@ -1,6 +1,10 @@
-package bg.su.fmi.fitness.assistant;
+package bg.su.fmi.fitness.assistant.player;
 
 import java.util.ArrayList;
+
+import bg.su.fmi.fitness.assistant.R;
+import bg.su.fmi.fitness.assistant.R.id;
+import bg.su.fmi.fitness.assistant.R.layout;
 
 import android.app.Activity;
 import android.content.Context;
