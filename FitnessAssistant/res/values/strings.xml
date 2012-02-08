@@ -3,5 +3,10 @@
 
     <string name="hello">Hello World, FitnessAssistantActivity!</string>
     <string name="app_name">FitnessAssistant</string>
+    <string name="exercises_name">Exercises</string>
+    <string name="new_button">New</string>
+    <string name="edit_button">Edit</string>
+    <string name="delete_button">Delete</string>
+    <string name="new_exercise_name">New Exercise</string>
 
 </resources>

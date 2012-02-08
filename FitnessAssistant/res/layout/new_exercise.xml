@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/exercise_name_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Exercise Name:" />
+
+    <EditText
+        android:id="@+id/exercise_name_field"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/video_link_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Video Link:" />
+
+    <EditText
+        android:id="@+id/video_link_field"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/repetitions_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Repetitions:" />
+
+    <EditText
+        android:id="@+id/repetitions_field"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/description_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Description:" />
+
+    <EditText
+        android:id="@+id/description_field"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top|left"
+        android:inputType="textMultiLine"
+        android:lines="5"
+        android:scrollHorizontally="false" />
+
+</LinearLayout>

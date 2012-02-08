@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/exercise_name_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="12pt"
+        android:text="Exercise Name goes here" />
+
+    <TextView
+        android:id="@+id/video_link_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10pt"
+        android:text="Video Link:" />
+
+    <TextView
+        android:id="@+id/video_link_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:autoLink="web"
+        android:text="http://youtube.com/video01" />
+
+    <TextView
+        android:id="@+id/repetitions_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10pt"
+        android:text="Repetitions:" />
+
+    <TextView
+        android:id="@+id/repetitions_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="8" />
+
+    <TextView
+        android:id="@+id/description_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10pt"
+        android:text="Description:" />
+
+    <TextView
+        android:id="@+id/description_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="The description should goes here. Also think about multiline textview." />
+
+</LinearLayout>
