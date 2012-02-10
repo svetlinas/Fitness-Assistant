@@ -5,51 +5,71 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/exercise_name_label"
+        android:id="@+id/new_exercise_name_label"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Exercise Name:" />
 
     <EditText
-        android:id="@+id/exercise_name_field"
+        android:id="@+id/new_exercise_name_field"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/video_link_label"
+        android:id="@+id/new_exercise_video_link_label"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Video Link:" />
 
     <EditText
-        android:id="@+id/video_link_field"
+        android:id="@+id/new_exercise_video_link_field"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
+    
+    <TextView
+        android:id="@+id/new_exercise_sets_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Sets:" />
+
+    <EditText
+        android:id="@+id/new_exercise_sets_field"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:numeric="integer" />
 
     <TextView
-        android:id="@+id/repetitions_label"
+        android:id="@+id/new_exercise_repetitions_label"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Repetitions:" />
 
     <EditText
-        android:id="@+id/repetitions_field"
+        android:id="@+id/new_exercise_repetitions_field"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:numeric="integer" />
 
     <TextView
-        android:id="@+id/description_label"
+        android:id="@+id/new_exercise_description_label"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Description:" />
 
     <EditText
-        android:id="@+id/description_field"
+        android:id="@+id/new_exercise_description_field"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="top|left"
         android:inputType="textMultiLine"
         android:lines="5"
         android:scrollHorizontally="false" />
+    
+    <Button
+            android:id="@+id/new_exercise_add_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Exercise" 
+            android:onClick="addButtonClicked"/>
 
 </LinearLayout>

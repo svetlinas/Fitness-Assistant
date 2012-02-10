@@ -5,51 +5,59 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/exercise_name_content"
+        android:id="@+id/view_exercise_name_content"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:textSize="12pt"
-        android:text="Exercise Name goes here" />
+        android:textSize="12pt" />
 
     <TextView
-        android:id="@+id/video_link_label"
+        android:id="@+id/view_exercise_video_link_label"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10pt"
         android:text="Video Link:" />
 
     <TextView
-        android:id="@+id/video_link_content"
+        android:id="@+id/view_exercise_video_link_content"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:autoLink="web"
-        android:text="http://youtube.com/video01" />
+        android:autoLink="web" />
 
     <TextView
-        android:id="@+id/repetitions_label"
+        android:id="@+id/view_exercise_sets_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10pt"
+        android:text="Sets:" />
+
+    <TextView
+        android:id="@+id/view_exercise_sets_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/view_exercise_repetitions_label"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10pt"
         android:text="Repetitions:" />
 
     <TextView
-        android:id="@+id/repetitions_content"
+        android:id="@+id/view_exercise_repetitions_content"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="8" />
+        android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/description_label"
+        android:id="@+id/view_exercise_description_label"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10pt"
         android:text="Description:" />
 
     <TextView
-        android:id="@+id/description_content"
+        android:id="@+id/view_exercise_description_content"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="The description should goes here. Also think about multiline textview." />
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

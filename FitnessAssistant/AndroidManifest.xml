@@ -30,7 +30,10 @@
         <activity
             android:name=".activities.NewExerciseActivity"
             android:label="@string/new_exercise_name" />
-        <activity android:name=".activities.ViewExerciseActivity" />
+        <activity
+            android:name=".activities.ViewExerciseActivity"
+            android:label="View Exercise" />
+>
     </application>
 
 </manifest>

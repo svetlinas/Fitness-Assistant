@@ -22,28 +22,36 @@ public final class R {
         public static final int workouts=0x7f020008;
     }
     public static final class id {
-        public static final int delete_exercise=0x7f070016;
-        public static final int description_content=0x7f070012;
-        public static final int description_field=0x7f070009;
-        public static final int description_label=0x7f070008;
+        public static final int delete_exercise=0x7f07001e;
         public static final int dietButton=0x7f070001;
-        public static final int edit_exercise=0x7f070015;
-        public static final int exercise_name_content=0x7f07000f;
-        public static final int exercise_name_field=0x7f070003;
-        public static final int exercise_name_label=0x7f070002;
-        public static final int music=0x7f07000a;
-        public static final int new_exercise=0x7f070013;
-        public static final int repetitions_content=0x7f070011;
-        public static final int repetitions_field=0x7f070007;
-        public static final int repetitions_label=0x7f070006;
-        public static final int resultList=0x7f07000e;
-        public static final int search=0x7f070014;
-        public static final int searchButton=0x7f07000d;
-        public static final int searchText=0x7f07000c;
-        public static final int track_path=0x7f07000b;
-        public static final int video_link_content=0x7f070010;
-        public static final int video_link_field=0x7f070005;
-        public static final int video_link_label=0x7f070004;
+        public static final int edit_exercise=0x7f07001d;
+        public static final int music=0x7f07000d;
+        public static final int new_exercise=0x7f07001b;
+        public static final int new_exercise_add_button=0x7f07000c;
+        public static final int new_exercise_description_field=0x7f07000b;
+        public static final int new_exercise_description_label=0x7f07000a;
+        public static final int new_exercise_name_field=0x7f070003;
+        public static final int new_exercise_name_label=0x7f070002;
+        public static final int new_exercise_repetitions_field=0x7f070009;
+        public static final int new_exercise_repetitions_label=0x7f070008;
+        public static final int new_exercise_sets_field=0x7f070007;
+        public static final int new_exercise_sets_label=0x7f070006;
+        public static final int new_exercise_video_link_field=0x7f070005;
+        public static final int new_exercise_video_link_label=0x7f070004;
+        public static final int resultList=0x7f070011;
+        public static final int search=0x7f07001c;
+        public static final int searchButton=0x7f070010;
+        public static final int searchText=0x7f07000f;
+        public static final int track_path=0x7f07000e;
+        public static final int view_exercise_description_content=0x7f07001a;
+        public static final int view_exercise_description_label=0x7f070019;
+        public static final int view_exercise_name_content=0x7f070012;
+        public static final int view_exercise_repetitions_content=0x7f070018;
+        public static final int view_exercise_repetitions_label=0x7f070017;
+        public static final int view_exercise_sets_content=0x7f070016;
+        public static final int view_exercise_sets_label=0x7f070015;
+        public static final int view_exercise_video_link_content=0x7f070014;
+        public static final int view_exercise_video_link_label=0x7f070013;
         public static final int workoutButton=0x7f070000;
     }
     public static final class layout {
