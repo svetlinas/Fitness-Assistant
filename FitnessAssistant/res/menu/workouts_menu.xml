@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item 	
+        android:id="@+id/new_workout" 
+        android:title="new"
+        android:icon="@drawable/search_icon">
+        
+    </item>
+    
+    <item 	
+        android:id="@+id/view_exercises" 
+        android:title="view "
+        android:icon="@drawable/search_icon">
+        
+    </item>
+
+</menu>
