@@ -62,6 +62,14 @@ public final class Tools {
 	
 	public static final int START_TIMER_EXERCISE_REQUEST_CODE = 7;
 	
+	
+public static final int EDIT_DAY_REQUEST_CODE = 104;
+	
+	public static final String EDIT_WORKOUT_EXTRA = "editWorkout";
+	public static final String EDIT_DAY_EXTRA = "editDay";
+	public static final String EDIT_WORKOUT_DAYS_EXTRA = "editWorkoutDays";
+	public static final String EDITED_WORKOUT_DAYS_EXTRA = "editedWorkoutDaysExtra";
+	
 	private Tools() {
 		// no instances
 	}

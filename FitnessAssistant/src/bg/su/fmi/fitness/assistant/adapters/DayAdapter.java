@@ -1,6 +1,7 @@
 package bg.su.fmi.fitness.assistant.adapters;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import bg.su.fmi.fitness.assistant.R;
 import bg.su.fmi.fitness.assistant.entities.Exersize;
@@ -32,7 +33,7 @@ public class DayAdapter extends ArrayAdapter<Day>{
 		
 		LinearLayout exercisesList = (LinearLayout)rowView.findViewById(R.id.day_exercises);
 		exercisesList.removeAllViews();
-		Exersize[] exercises = values.get(position).getExercises();
+		List<Exersize> exercises = values.get(position).getExercises();
 		
 		for(Exersize exercise : exercises)
 		{

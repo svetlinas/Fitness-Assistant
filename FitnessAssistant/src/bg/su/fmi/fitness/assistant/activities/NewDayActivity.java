@@ -21,7 +21,12 @@ public class NewDayActivity extends ListActivity{
 	private Day day;
 	private List<Exersize> exercises;
 	
+	private boolean editMode;
+	private Intent intent;
+	
 	private ExersizesDataSourse dataSource;
+	
+	
 	
 	public ExersizesDataSourse getDataSource() {
 		if (dataSource == null) {
@@ -37,7 +42,8 @@ public class NewDayActivity extends ListActivity{
 
         setContentView(R.layout.new_day);
 		
-        day = new Day(getIntent().getIntExtra(Tools.NEW_DAY_NUMBER_EXTRA, 1));
+        intent = getIntent();
+        exercises = getAllExercises();
         
         setListAdapter(new ArrayAdapter<Exersize>(this,
                 android.R.layout.simple_list_item_multiple_choice, exercises));
@@ -47,6 +53,17 @@ public class NewDayActivity extends ListActivity{
         listView.setItemsCanFocus(false);
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         
+        
+        day = (Day)intent.getSerializableExtra("EDIT_DAY_EXTRA");
+        if(day != null)
+        {
+        	editMode = true;
+        	//TODO show selected exercises
+        }
+        else
+        {
+        	day = new Day(getIntent().getIntExtra(Tools.NEW_DAY_NUMBER_EXTRA, 1));
+        }
 	}
 	
 	
@@ -64,8 +81,8 @@ public class NewDayActivity extends ListActivity{
 		}
 		
 		Intent resultIntent = new Intent();
-		day.setExercises(result.toArray(day.getExercises()));
-		resultIntent.putExtra("day", day);
+		day.setExercises(result);
+		resultIntent.putExtra(Tools.NEW_DAY_EXTRA, day);
 		setResult(RESULT_OK,resultIntent);        
 	    finish();
 	}

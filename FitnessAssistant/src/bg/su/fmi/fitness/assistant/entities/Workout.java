@@ -20,7 +20,12 @@ public class Workout implements Serializable {
 		this.duration = duration;
 		this.name = name;
 	}
-
+	
+	public Workout()
+	{
+		
+	}
+	
 	public long getId() {
 		return id;
 	}

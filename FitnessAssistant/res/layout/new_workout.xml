@@ -31,24 +31,8 @@
         android:id="@+id/workout_type_field"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
+     
     
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Duration:" />
-    <EditText
-        android:id="@+id/workout_duration_field"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />"
-        "
-	<TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Diet:" />
-    <EditText
-        android:id="@+id/workout_diet_field"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
     
     <LinearLayout
         android:layout_width="fill_parent"
@@ -60,10 +44,24 @@
         	android:layout_height="wrap_content"
         	android:onClick="createWorkout"
         	android:text="Next" />
+        	
+        <Button
+       	 	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:onClick="addDay"
+        	android:text="Add day" />
+        	
         <Button
        	 	android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
         	android:onClick="cancel"
         	android:text="Cancel" />
+        	
+       
     </LinearLayout>
+    
+     <ListView
+	    android:id="@+id/android:list"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent" />
 </LinearLayout>

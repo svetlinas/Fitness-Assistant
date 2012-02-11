@@ -1,12 +1,15 @@
 package bg.su.fmi.fitness.assistant.activities;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import bg.su.fmi.fitness.assistant.R;
 import bg.su.fmi.fitness.assistant.adapters.Day;
 import bg.su.fmi.fitness.assistant.adapters.DayAdapter;
 import bg.su.fmi.fitness.assistant.entities.Exersize;
 import bg.su.fmi.fitness.assistant.entities.Workout;
+import bg.su.fmi.fitness.assistant.entities.WorkoutExersize;
+import bg.su.fmi.fitness.assistant.storage.ExersizesDataSourse;
 import bg.su.fmi.fitness.assistant.storage.WorkoutsDataSourse;
 import bg.su.fmi.fitness.assistant.storage.WorkoutsExersizesDataSourse;
 import bg.su.fmi.fitness.assistant.util.Tools;
@@ -29,6 +32,7 @@ public class ViewWorkoutActivity extends ListActivity{
 	private DayAdapter adapter;
 	private WorkoutsDataSourse dataSource;
 	private WorkoutsExersizesDataSourse weDataSource;
+	private ExersizesDataSourse exDataSource;
 	
 	private Intent intent;
 	
@@ -46,6 +50,13 @@ public class ViewWorkoutActivity extends ListActivity{
 			weDataSource = new WorkoutsExersizesDataSourse(this);
 		}
 		return weDataSource;
+	}
+	
+	public ExersizesDataSourse getExDataSource() {
+		if (exDataSource == null) {
+			exDataSource = new ExersizesDataSourse(this);
+		}
+		return exDataSource;
 	}
 	
 	@Override
@@ -78,22 +89,23 @@ public class ViewWorkoutActivity extends ListActivity{
 		TextView durationTextView = (TextView) findViewById(R.id.duration_value);
 		durationTextView.setText(Tools.stringIntegerValue(workout.getDuration()));
 		
-		//TODO start ViewDietActivity
-				TextView dietTextView = (TextView) findViewById(R.id.diet_value);
-				dietTextView.setText("diet");
 	}
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.workouts_menu, menu);
+		inflater.inflate(R.menu.view_workout_menu, menu);
 		return true;
 	}
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == R.id.edit_workout) {
-			//TODO open activity
+			Intent intent = new Intent(this, NewWorkoutActivity.class);
+			intent.putExtra(Tools.EDIT_WORKOUT_EXTRA, workout);
+			intent.putExtra(Tools.EDIT_WORKOUT_DAYS_EXTRA, days);
+			startActivityForResult(intent, Tools.EDIT_WORKOUT_REQUEST_CODE);
+			//finish();
 			return true;
 		} else if(item.getItemId() == R.id.delete_workout)
 		{
@@ -118,17 +130,45 @@ public class ViewWorkoutActivity extends ListActivity{
 	
 	private ArrayList<Day> getWorkoutDays(long workoutId)
 	{
-		//TODO
-		return null;
+		ArrayList<Day> result= new ArrayList<Day>();
+		getExDataSource().open();
+		getWeDataSource().open();
+		for(int i = 1; i <= workout.getDuration(); i++)
+		{
+			Day nextDay = new Day(i);
+			ArrayList<Exersize> dayExercises= new ArrayList<Exersize>();
+			List<WorkoutExersize> we = weDataSource.getWorkoutDay(workoutId, i);
+			for(WorkoutExersize item : we)
+			{
+				dayExercises.add(exDataSource.getExercise(item.getExersizeId()));
+			}
+			nextDay.setExercises(dayExercises);
+			result.add(nextDay);
+		}
+		getExDataSource().close();
+		getWeDataSource().close();
+		return result;
 	}
 	
 	private int deleteWorkout() {
 		getDataSource().open();
-		//TODO DELETE workoutExercise
-		
+		getWeDataSource().open();
+		getWeDataSource().deleteWorkout(workout.getId());
+		getWeDataSource().close();
 		return getDataSource().deleteWorkout(workout.getId());
 	}
 	
 	
-	
+	@SuppressWarnings("unchecked")
+	protected void onActivityResult(int requestCode, int resultCode, Intent data)
+	{
+		super.onActivityResult(requestCode, resultCode, data);
+		if(resultCode == RESULT_OK && requestCode == Tools.EDIT_WORKOUT_REQUEST_CODE)
+		{
+			workout =(Workout) data.getSerializableExtra(Tools.EDITED_WORKOUT_EXTRA);
+			days = (ArrayList<Day>) data.getSerializableExtra(Tools.EDITED_WORKOUT_DAYS_EXTRA);
+			setListAdapter(new DayAdapter(this,days));
+			loadFields();
+		}
+	}
 }

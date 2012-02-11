@@ -96,13 +96,13 @@ public class WorkoutsDataSourse {
 				cursor.getString(2), cursor.getInt(3), cursor.getString(4));
 	}
 	
-	public void addWorkout(String name, String gender, String type, int duration) {
+	public long addWorkout(String name, String gender, String type, int duration) {
 		final ContentValues values = new ContentValues();
 		values.put(COLUMN_GENDER, gender);
 		values.put(COLUMN_TYPE, type);
 		values.put(COLUMN_DURATION, duration);
 		values.put(COLUMN_NAME, name);
-		database.insert(TABLE_NAME, null, values);
+		return database.insert(TABLE_NAME, null, values);
 	}
 	
 	public int deleteWorkout(long id) {
@@ -113,5 +113,20 @@ public class WorkoutsDataSourse {
 	private SearchedObject getSearchedObject(Cursor cursor) {
 		return new SearchedObject(cursor.getString(4), cursor.getLong(1), "Workout");
 	}
-
+	
+	
+	public long addWorkout(Workout w)
+	{
+		return addWorkout(w.getName(),w.getGender(),w.getType(),w.getDuration());
+	}
+	
+	public int updateWorkout(Workout w) {
+		final ContentValues values = new ContentValues();
+		values.put(COLUMN_GENDER, w.getGender());
+		values.put(COLUMN_TYPE, w.getType());
+		values.put(COLUMN_DURATION, w.getDuration());
+		values.put(COLUMN_NAME, w.getName());
+		return database.update(TABLE_NAME, values, COLUMN_ID + "=?",
+				new String[] { w.getId() + "" });
+	}
 }
