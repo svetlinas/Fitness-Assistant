@@ -15,6 +15,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import bg.su.fmi.fitness.assistant.entities.Diet;
+import bg.su.fmi.fitness.assistant.entities.SearchedObject;
 import bg.su.fmi.fitness.assistant.storage.helper.BaseSQLiteHelper;
 
 public class DietsDataSourse {
@@ -64,6 +65,45 @@ public class DietsDataSourse {
 		return diets;
 	}
 	
+	/**
+	 * Returns an Diet object with the given id.
+	 * @param id The id of the needed diet
+	 * @return the Diet with the given id
+	 */
+	public Diet getExercise(long id) {
+		final Cursor cursor = database.query(TABLE_NAME, allColumns, COLUMN_ID+"=?",
+				new String[] {String.valueOf(id)}, null, null, null);
+		cursor.moveToFirst();
+		final Diet diet = getDiet(cursor);
+		cursor.close();
+
+		return diet;
+	}
+	
+	/**
+	 * Returns a list of SerachedObject containing all ids of the diets with
+	 * the given dietName.
+	 * 
+	 * @param dietName
+	 *            The name of the diet we are looking for
+	 * @return List of SearchedObject
+	 */
+	public List<SearchedObject> getSearchedExersizes(String dietName) {
+		List<SearchedObject> result = new ArrayList<SearchedObject>();
+
+		Cursor cursor = database.query(TABLE_NAME, allColumns, COLUMN_NAME
+				+ "=?", new String[] { dietName }, null, null, null);
+		cursor.moveToFirst();
+		while(!cursor.isAfterLast()) {
+			final SearchedObject searchedObject = getSearchedObject(cursor);
+			result.add(searchedObject);
+			cursor.moveToNext();
+		}
+		cursor.close();
+
+		return result;
+	}
+	
 	public int deleteDiet(long id) {
 		return database.delete(TABLE_NAME, COLUMN_ID + "=?", new String[] { id
 				+ "" });
@@ -87,4 +127,9 @@ public class DietsDataSourse {
 		return new Diet(cursor.getLong(0), cursor.getString(1),
 				cursor.getInt(2), cursor.getString(3), cursor.getString(4));
 	}
+	
+	private SearchedObject getSearchedObject(Cursor cursor) {
+		return new SearchedObject(cursor.getString(0), cursor.getLong(1));
+	}
 }
+

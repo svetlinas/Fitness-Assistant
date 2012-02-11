@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Workout implements Serializable {
 
+	private static final long serialVersionUID = 9206226494418505604L;
 	private long id;
 	private String gender;
 	private String type;

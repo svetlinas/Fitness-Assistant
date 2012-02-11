@@ -14,6 +14,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import bg.su.fmi.fitness.assistant.entities.SearchedObject;
 import bg.su.fmi.fitness.assistant.entities.Workout;
 import bg.su.fmi.fitness.assistant.storage.helper.BaseSQLiteHelper;
 
@@ -51,6 +52,45 @@ public class WorkoutsDataSourse {
 		return workouts;
 	}
 
+	/**
+	 * Returns an Workout object with the given id.
+	 * @param id The id of the needed workout
+	 * @return the Workout with the given id
+	 */
+	public Workout getExercise(long id) {
+		final Cursor cursor = database.query(TABLE_NAME, allColumns, COLUMN_ID+"=?",
+				new String[] {String.valueOf(id)}, null, null, null);
+		cursor.moveToFirst();
+		final Workout workout = getWorkout(cursor);
+		cursor.close();
+
+		return workout;
+	}
+	
+	/**
+	 * Returns a list of SerachedObject containing all ids of the workouts with
+	 * the given workoutName.
+	 * 
+	 * @param workoutName
+	 *            The name of the workout we are looking for
+	 * @return List of SearchedObject
+	 */
+	public List<SearchedObject> getSearchedExersizes(String workoutName) {
+		List<SearchedObject> result = new ArrayList<SearchedObject>();
+
+		Cursor cursor = database.query(TABLE_NAME, allColumns, COLUMN_NAME
+				+ "=?", new String[] { workoutName }, null, null, null);
+		cursor.moveToFirst();
+		while(!cursor.isAfterLast()) {
+			final SearchedObject searchedObject = getSearchedObject(cursor);
+			result.add(searchedObject);
+			cursor.moveToNext();
+		}
+		cursor.close();
+
+		return result;
+	}
+	
 	private Workout getWorkout(Cursor cursor) {
 		return new Workout(cursor.getLong(0), cursor.getString(1),
 				cursor.getString(2), cursor.getInt(3), cursor.getString(4));
@@ -69,4 +109,9 @@ public class WorkoutsDataSourse {
 		return database.delete(TABLE_NAME, COLUMN_ID + "=?", new String[] { id
 				+ "" });
 	}
+	
+	private SearchedObject getSearchedObject(Cursor cursor) {
+		return new SearchedObject(cursor.getString(0), cursor.getLong(1));
+	}
+
 }
