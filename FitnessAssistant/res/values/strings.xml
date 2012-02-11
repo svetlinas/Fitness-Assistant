@@ -4,11 +4,12 @@
     <string name="hello">Hello World, FitnessAssistantActivity!</string>
     <string name="app_name">FitnessAssistant</string>
     <string name="exercises_name">Exercises</string>
+    <string name="diets_name">Diets</string>
     <string name="new_button">New</string>
     <string name="edit_button">Edit</string>
     <string name="delete_button">Delete</string>
     <string name="new_exercise_name">New Exercise</string>
-    
     <string name="view_exercises_button">Exercises</string>
+    <string name="new_diet_name">New Diet</string>
 
 </resources>

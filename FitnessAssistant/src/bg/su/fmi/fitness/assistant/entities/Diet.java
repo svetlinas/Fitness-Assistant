@@ -1,7 +1,10 @@
 package bg.su.fmi.fitness.assistant.entities;
 
-public class Diet {
+import java.io.Serializable;
 
+public class Diet implements Serializable {
+
+	private static final long serialVersionUID = -5773406459098597834L;
 	private long id;
 	private String type;
 	private int duration;
@@ -17,6 +20,29 @@ public class Diet {
 		this.name = name;
 		this.description = description;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (id ^ (id >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Diet other = (Diet) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
+
 
 	public long getId() {
 		return id;
@@ -58,4 +84,8 @@ public class Diet {
 		this.description = description;
 	}
 	
+	@Override
+	public String toString() {
+		return getName();
+	}
 }

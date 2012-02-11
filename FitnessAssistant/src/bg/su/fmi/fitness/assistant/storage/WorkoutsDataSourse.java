@@ -28,7 +28,7 @@ public class WorkoutsDataSourse {
 	}
 
 	public void open() {
-		database = dbHelper.getReadableDatabase();
+		database = dbHelper.getWritableDatabase();
 	}
 
 	public void close() {

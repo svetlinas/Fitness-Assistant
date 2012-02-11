@@ -66,6 +66,7 @@ public class ExercisesActivity extends ListActivity {
 	public List<Exersize> getAllExercises() {
 		getDataSource().open();
 		exercises = getDataSource().getAllExercises();
+		getDataSource().close();
 		return exercises;
 
 	}

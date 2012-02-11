@@ -10,6 +10,7 @@ import static bg.su.fmi.fitness.assistant.storage.helper.DietsSQLiteHelper.TABLE
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -34,8 +35,21 @@ public class DietsDataSourse {
 	public void close() {
 		dbHelper.close();
 	}
+	
+	public long addDiet(String type, int duration, String name, String description) {
+		final ContentValues values = new ContentValues();
+		values.put(COLUMN_TYPE, type);
+		values.put(COLUMN_DURATION, duration);
+		values.put(COLUMN_NAME, name);
+		values.put(COLUMN_DESCRIPTION, description);
+		return database.insert(TABLE_NAME, null, values);
+	}
 
-	public List<Diet> getAllWorkouts() {
+	public long addDiet(Diet d) {
+		return addDiet(d.getType(), d.getDuration(), d.getName(), d.getDescription());
+	}
+
+	public List<Diet> getAllDiets() {
 		final List<Diet> diets = new ArrayList<Diet>();
 		final Cursor cursor = database.query(TABLE_NAME, allColumns, null,
 				null, null, null, null);
@@ -48,6 +62,25 @@ public class DietsDataSourse {
 		cursor.close();
 
 		return diets;
+	}
+	
+	public int deleteDiet(long id) {
+		return database.delete(TABLE_NAME, COLUMN_ID + "=?", new String[] { id
+				+ "" });
+	}
+
+	public int updateDiet(long id, String type, int duration, String name, String description) {
+		final ContentValues values = new ContentValues();
+		values.put(COLUMN_TYPE, type);
+		values.put(COLUMN_DURATION, duration);
+		values.put(COLUMN_NAME, name);
+		values.put(COLUMN_DESCRIPTION, description);
+		return database.update(TABLE_NAME, values, COLUMN_ID + "=?",
+				new String[] { id + "" });
+	}
+
+	public int updateDiet(long id, Diet d) {
+		return updateDiet(id, d.getType(), d.getDuration(), d.getName(), d.getDescription());
 	}
 
 	private Diet getDiet(Cursor cursor) {

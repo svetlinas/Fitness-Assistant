@@ -38,6 +38,13 @@
         <activity android:name=".activities.ViewWorkoutActivity" />
         <activity android:name=".activities.NewWorkoutActivity" />
         <activity android:name=".activities.NewDayActivity" />
+        <activity
+            android:name=".activities.DietsActivity"
+            android:label="@string/diets_name" />
+        <activity
+            android:name=".activities.NewDietActivity"
+            android:label="@string/new_diet_name" />
+        <activity android:name=".activities.ViewDietActivity" />
     </application>
 
 </manifest>

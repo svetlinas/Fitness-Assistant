@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/new_diet_name_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Name:" />
+
+    <EditText
+        android:id="@+id/new_diet_name_field"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/new_diet_type_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Type:" />
+
+    <EditText
+        android:id="@+id/new_diet_type_field"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/new_diet_duration_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Duration:" />
+
+    <EditText
+        android:id="@+id/new_diet_duration_field"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:numeric="integer" />
+
+    <TextView
+        android:id="@+id/new_diet_description_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Description:" />
+
+    <EditText
+        android:id="@+id/new_diet_description_field"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top|left"
+        android:inputType="textMultiLine"
+        android:lines="5"
+        android:scrollHorizontally="false" />
+
+    <Button
+        android:id="@+id/new_diet_add_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addButtonClicked"
+        android:text="Add Diet" />
+
+</LinearLayout>

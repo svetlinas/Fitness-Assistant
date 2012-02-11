@@ -2,12 +2,6 @@ package bg.su.fmi.fitness.assistant.activities;
 
 import java.util.List;
 
-import bg.su.fmi.fitness.assistant.R;
-import bg.su.fmi.fitness.assistant.entities.Exersize;
-import bg.su.fmi.fitness.assistant.entities.Workout;
-import bg.su.fmi.fitness.assistant.storage.ExersizesDataSourse;
-import bg.su.fmi.fitness.assistant.storage.WorkoutsDataSourse;
-import bg.su.fmi.fitness.assistant.util.Tools;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,10 +10,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import bg.su.fmi.fitness.assistant.R;
+import bg.su.fmi.fitness.assistant.entities.Workout;
+import bg.su.fmi.fitness.assistant.storage.WorkoutsDataSourse;
+import bg.su.fmi.fitness.assistant.util.Tools;
 
 public class WorkoutsActivity extends ListActivity{
 	
@@ -64,8 +61,10 @@ public class WorkoutsActivity extends ListActivity{
 	
 	
 	public List<Workout> getAllWorkouts() {
+		getDataSource().close();
 		getDataSource().open();
 		workouts = getDataSource().getAllWorkouts();
+		getDataSource().close();
 		return workouts;
 
 	}

@@ -36,7 +36,7 @@ public class ScoresSQLiteHelper extends BaseSQLiteHelper {
 			+ WorkoutsExersizesSQLiteHelper.COLUMN_ID + "), foreign key ("
 			+ COLUMN_EXERSIZE_ID + ") REFERENCES "
 			+ ExersizesSQLiteHelper.TABLE_NAME + " ("
-			+ ExersizesSQLiteHelper.COLUMN_ID + ");";
+			+ ExersizesSQLiteHelper.COLUMN_ID + "));";
 
 	public ScoresSQLiteHelper(Context context) {
 		super(context);

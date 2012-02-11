@@ -1,16 +1,13 @@
 package bg.su.fmi.fitness.assistant.activities;
 
-import bg.su.fmi.fitness.assistant.R;
-import bg.su.fmi.fitness.assistant.R.id;
-import bg.su.fmi.fitness.assistant.R.layout;
-import bg.su.fmi.fitness.assistant.R.menu;
-import bg.su.fmi.fitness.assistant.player.AudioPlayerController;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import bg.su.fmi.fitness.assistant.R;
+import bg.su.fmi.fitness.assistant.player.AudioPlayerController;
 
 public class FitnessAssistantActivity extends AudioPlayerController {
     /** Called when the activity is first created. */
@@ -55,8 +52,8 @@ public class FitnessAssistantActivity extends AudioPlayerController {
     public void openDietActivity(View view)
     {
 //    	TODO
-//    	Intent intent = new Intent(this, DietActivity.class);
-//    	startActivity(intent);
+    	Intent intent = new Intent(this, DietsActivity.class);
+    	startActivity(intent);
     	System.out.println("diet");
     }
 }

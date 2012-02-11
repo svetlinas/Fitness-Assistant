@@ -34,6 +34,7 @@ public class WorkoutsSQLiteHelper extends BaseSQLiteHelper {
 	@Override
 	public void onCreate(SQLiteDatabase database) {
 		database.execSQL(TABLE_CREATE);
+		System.out.println("HHHHHHHHHHHHHHH CREATE TABLE");
 		// TODO: use addWorkout method to populate this table
 		addWorkout(database, "workout1", "male", "type", 5);
 	}
