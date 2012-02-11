@@ -1,8 +1,9 @@
 package bg.su.fmi.fitness.assistant.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Score {
+public class Score implements Serializable {
 
 	private long id;
 	private long workoutId;

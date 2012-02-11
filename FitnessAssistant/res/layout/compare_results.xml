@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/compare_table"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:stretchColumns="1" >
+
+    <TableRow>
+
+        <TextView android:text="Ex1 name" />
+
+        <TextView android:text="Ex2 name" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="weight: 30" />
+
+        <TextView android:text="weight: 35" />
+    </TableRow>
+
+</TableLayout>

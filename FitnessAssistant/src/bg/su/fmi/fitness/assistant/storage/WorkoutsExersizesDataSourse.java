@@ -53,13 +53,31 @@ public class WorkoutsExersizesDataSourse {
 
 		return workoutsExersizes;
 	}
-	
-	public void addInformationToDatabase(SQLiteDatabase database, long workoutId, long exersizeId, int day, Date created){
+
+	public List<WorkoutExersize> getWorkoutDay(long workoutId, int day) {
+		final List<WorkoutExersize> workoutsExersizes = new ArrayList<WorkoutExersize>();
+		final Cursor cursor = database.query(TABLE_NAME, allColumns,
+				COLUMN_WORKOUT_ID + "=? AND " + COLUMN_DAY + "=?",
+				new String[] { workoutId + "", day + "" }, null, null, null);
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			final WorkoutExersize workoutExersize = getWorkoutExersize(cursor);
+			workoutsExersizes.add(workoutExersize);
+			cursor.moveToNext();
+		}
+		cursor.close();
+
+		return workoutsExersizes;
+	}
+
+	public void addInformationToDatabase(SQLiteDatabase database,
+			long workoutId, long exersizeId, int day, Date created) {
 		final ContentValues values = new ContentValues();
 		values.put(COLUMN_WORKOUT_ID, workoutId);
 		values.put(COLUMN_EXERSIZE_ID, exersizeId);
 		values.put(COLUMN_DAY, day);
-		values.put(COLUMN_DAY_CREATED, new SimpleDateFormat().format(created).toString());
+		values.put(COLUMN_DAY_CREATED, new SimpleDateFormat().format(created)
+				.toString());
 		database.insert(TABLE_NAME, null, values);
 	}
 
@@ -73,5 +91,5 @@ public class WorkoutsExersizesDataSourse {
 		return new WorkoutExersize(cursor.getLong(0), cursor.getLong(1),
 				cursor.getLong(2), cursor.getInt(3), dateCreated);
 	}
-	
+
 }

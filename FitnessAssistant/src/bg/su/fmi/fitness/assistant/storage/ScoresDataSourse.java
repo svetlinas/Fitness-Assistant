@@ -25,8 +25,9 @@ import bg.su.fmi.fitness.assistant.storage.helper.BaseSQLiteHelper;
 public class ScoresDataSourse {
 	private SQLiteDatabase database;
 	private BaseSQLiteHelper dbHelper;
-	private String[] allColumns = { COLUMN_ID, COLUMN_WORKOUT_ID, COLUMN_EXERSIZE_ID,
-			COLUMN_SET_NUMBER, COLUMN_WEIGHT, COLUMN_TIME, COLUMN_CREATED};
+	private String[] allColumns = { COLUMN_ID, COLUMN_WORKOUT_ID,
+			COLUMN_EXERSIZE_ID, COLUMN_SET_NUMBER, COLUMN_WEIGHT, COLUMN_TIME,
+			COLUMN_CREATED };
 
 	public ScoresDataSourse(Context context) {
 		dbHelper = new BaseSQLiteHelper(context);
@@ -55,9 +56,8 @@ public class ScoresDataSourse {
 		return scores;
 	}
 
-	public void addScores(SQLiteDatabase database, long workoutId,
-			long exersizeId, int setNumber, double weight, Date time,
-			Date created) {
+	public void addScore(long workoutId, long exersizeId, int setNumber,
+			double weight, Date time, Date created) {
 		final ContentValues values = new ContentValues();
 		values.put(COLUMN_WORKOUT_ID, workoutId);
 		values.put(COLUMN_EXERSIZE_ID, exersizeId);
@@ -67,7 +67,13 @@ public class ScoresDataSourse {
 		values.put(COLUMN_CREATED, new SimpleDateFormat().format(created));
 		database.insert(TABLE_NAME, null, values);
 	}
-	
+
+	public void addScore(Score score) {
+		addScore(score.getWorkoutId(), score.getExersizeId(),
+				score.getSetNumber(), score.getWeight(), score.getTime(),
+				score.getCreated());
+	}
+
 	private Score getScore(Cursor cursor) {
 		Date time = null;
 		Date created = null;
@@ -75,10 +81,12 @@ public class ScoresDataSourse {
 			final SimpleDateFormat formatter = new SimpleDateFormat();
 			time = formatter.parse(cursor.getString(5));
 			created = formatter.parse(cursor.getString(6));
-		} catch (ParseException e){
+		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		return new Score(cursor.getLong(0), cursor.getLong(1), cursor.getLong(2), cursor.getInt(3), cursor.getDouble(4), time, created);
+		return new Score(cursor.getLong(0), cursor.getLong(1),
+				cursor.getLong(2), cursor.getInt(3), cursor.getDouble(4), time,
+				created);
 	}
 
 }

@@ -60,6 +60,8 @@ public final class Tools {
 
 	public static final int NEW_DIET_REQUEST_CODE = 6;
 	
+	public static final int START_TIMER_EXERCISE_REQUEST_CODE = 7;
+	
 	private Tools() {
 		// no instances
 	}

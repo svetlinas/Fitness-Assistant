@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView
+        android:id="@+id/live_workout_name_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="14pt" />
+    
+    <TextView
+        android:id="@+id/live_workout_day_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="13pt" />
+
+    <TextView
+        android:id="@+id/live_exercise_name_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="12pt" />
+
+    <TextView
+        android:id="@+id/live_exercise_video_link_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10pt"
+        android:text="Video Link:" />
+
+    <TextView
+        android:id="@+id/live_exercise_video_link_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:autoLink="web" />
+
+    <TextView
+        android:id="@+id/live_exercise_sets_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10pt"
+        android:text="Sets:" />
+
+    <TextView
+        android:id="@+id/live_exercise_sets_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/live_exercise_repetitions_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10pt"
+        android:text="Repetitions:" />
+
+    <TextView
+        android:id="@+id/live_exercise_repetitions_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/live_exercise_description_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10pt"
+        android:text="Description:" />
+
+    <TextView
+        android:id="@+id/live_exercise_description_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+    
+    <Button
+            android:id="@+id/live_workout_start_exercise_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start Exercise" 
+            android:onClick="startButtonClicked"/>
+
+</LinearLayout>
