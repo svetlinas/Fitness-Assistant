@@ -1,10 +1,14 @@
 package bg.su.fmi.fitness.assistant.storage.helper;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+/**
+ * This class creates the table in the database which is 
+ * responsible for the storage of exercises.
+ *
+ */
 public class ExersizesSQLiteHelper extends BaseSQLiteHelper {
 
 	public static final String TABLE_NAME = "exersizes";
@@ -29,9 +33,6 @@ public class ExersizesSQLiteHelper extends BaseSQLiteHelper {
 	@Override
 	public void onCreate(SQLiteDatabase database) {
 		database.execSQL(TABLE_CREATE);
-		// TODO: populate this table using the addExersize() method
-		// addExersize(database, "ex1", 2, 3, "descriotion1",
-		// "www.youtube.com");
 	}
 
 	@Override

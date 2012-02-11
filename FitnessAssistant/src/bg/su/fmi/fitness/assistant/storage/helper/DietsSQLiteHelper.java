@@ -5,6 +5,11 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+/**
+ * This class creates the table in the database which is 
+ * responsible for the storage of diets.
+ *
+ */
 public class DietsSQLiteHelper extends BaseSQLiteHelper {
 
 	public static final String TABLE_NAME = "diets";

@@ -16,6 +16,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import bg.su.fmi.fitness.assistant.entities.Exersize;
+import bg.su.fmi.fitness.assistant.entities.SearchedObject;
 import bg.su.fmi.fitness.assistant.storage.helper.ExersizesSQLiteHelper;
 
 public class ExersizesDataSourse {
@@ -68,10 +69,43 @@ public class ExersizesDataSourse {
 		return exersizes;
 	}
 
-	private Exersize getExersize(Cursor cursor) {
-		return new Exersize(cursor.getLong(0), cursor.getString(1),
-				cursor.getInt(2), cursor.getInt(3), cursor.getString(4),
-				cursor.getString(5));
+	/**
+	 * Returns an Exersize object with the given id.
+	 * @param id The id of the needed exercise
+	 * @return the Exersize with the given id
+	 */
+	public Exersize getExercise(long id) {
+		final Cursor cursor = database.query(TABLE_NAME, allColumns, COLUMN_ID+"=?",
+				new String[] {String.valueOf(id)}, null, null, null);
+		cursor.moveToFirst();
+		final Exersize exersize = getExersize(cursor);
+		cursor.close();
+
+		return exersize;
+	}
+	
+	/**
+	 * Returns a list of SerachedObject containing all ids of the exercises with
+	 * the given exersizeName.
+	 * 
+	 * @param exersizeName
+	 *            The name of the exercises we are looking for
+	 * @return List of SearchedObject
+	 */
+	public List<SearchedObject> getSearchedExersizes(String exersizeName) {
+		List<SearchedObject> result = new ArrayList<SearchedObject>();
+
+		Cursor cursor = database.query(TABLE_NAME, allColumns, COLUMN_NAME
+				+ "=?", new String[] { exersizeName }, null, null, null);
+		cursor.moveToFirst();
+		while(!cursor.isAfterLast()) {
+			final SearchedObject searchedObject = getSearchedObject(cursor);
+			result.add(searchedObject);
+			cursor.moveToNext();
+		}
+		cursor.close();
+
+		return result;
 	}
 
 	public int deleteExercise(long id) {
@@ -95,4 +129,15 @@ public class ExersizesDataSourse {
 		return updateExercise(id, e.getName(), e.getSets(), e.getRepetitions(),
 				e.getDescription(), e.getVideo());
 	}
+
+	private Exersize getExersize(Cursor cursor) {
+		return new Exersize(cursor.getLong(0), cursor.getString(1),
+				cursor.getInt(2), cursor.getInt(3), cursor.getString(4),
+				cursor.getString(5));
+	}
+
+	private SearchedObject getSearchedObject(Cursor cursor) {
+		return new SearchedObject(cursor.getColumnName(0), cursor.getLong(1));
+	}
+
 }
