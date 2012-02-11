@@ -4,11 +4,21 @@ public class SearchedObject {
 	
 	private String name;
 	private long id;
+	private String type;
 	
-	public SearchedObject(String name, long id) {
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public SearchedObject(String name, long id, String type) {
 		super();
 		this.name = name;
 		this.id = id;
+		this.type = type;
 	}
 
 	public String getName() {

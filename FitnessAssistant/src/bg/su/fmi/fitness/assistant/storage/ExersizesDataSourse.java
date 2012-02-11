@@ -137,7 +137,7 @@ public class ExersizesDataSourse {
 	}
 
 	private SearchedObject getSearchedObject(Cursor cursor) {
-		return new SearchedObject(cursor.getString(0), cursor.getLong(1));
+		return new SearchedObject(cursor.getString(1), cursor.getLong(0), "Exersize");
 	}
 
 }

@@ -70,7 +70,7 @@ public class DietsDataSourse {
 	 * @param id The id of the needed diet
 	 * @return the Diet with the given id
 	 */
-	public Diet getExercise(long id) {
+	public Diet getDiet(long id) {
 		final Cursor cursor = database.query(TABLE_NAME, allColumns, COLUMN_ID+"=?",
 				new String[] {String.valueOf(id)}, null, null, null);
 		cursor.moveToFirst();
@@ -88,7 +88,7 @@ public class DietsDataSourse {
 	 *            The name of the diet we are looking for
 	 * @return List of SearchedObject
 	 */
-	public List<SearchedObject> getSearchedExersizes(String dietName) {
+	public List<SearchedObject> getSearchedDiets(String dietName) {
 		List<SearchedObject> result = new ArrayList<SearchedObject>();
 
 		Cursor cursor = database.query(TABLE_NAME, allColumns, COLUMN_NAME
@@ -129,7 +129,7 @@ public class DietsDataSourse {
 	}
 	
 	private SearchedObject getSearchedObject(Cursor cursor) {
-		return new SearchedObject(cursor.getString(0), cursor.getLong(1));
+		return new SearchedObject(cursor.getString(3), cursor.getLong(0), "Diet");
 	}
 }
 

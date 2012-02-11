@@ -57,7 +57,7 @@ public class WorkoutsDataSourse {
 	 * @param id The id of the needed workout
 	 * @return the Workout with the given id
 	 */
-	public Workout getExercise(long id) {
+	public Workout getWorkout(long id) {
 		final Cursor cursor = database.query(TABLE_NAME, allColumns, COLUMN_ID+"=?",
 				new String[] {String.valueOf(id)}, null, null, null);
 		cursor.moveToFirst();
@@ -75,7 +75,7 @@ public class WorkoutsDataSourse {
 	 *            The name of the workout we are looking for
 	 * @return List of SearchedObject
 	 */
-	public List<SearchedObject> getSearchedExersizes(String workoutName) {
+	public List<SearchedObject> getSearchedWorkouts(String workoutName) {
 		List<SearchedObject> result = new ArrayList<SearchedObject>();
 
 		Cursor cursor = database.query(TABLE_NAME, allColumns, COLUMN_NAME
@@ -111,7 +111,7 @@ public class WorkoutsDataSourse {
 	}
 	
 	private SearchedObject getSearchedObject(Cursor cursor) {
-		return new SearchedObject(cursor.getString(0), cursor.getLong(1));
+		return new SearchedObject(cursor.getString(4), cursor.getLong(1), "Workout");
 	}
 
 }
