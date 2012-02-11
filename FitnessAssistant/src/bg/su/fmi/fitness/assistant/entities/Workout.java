@@ -1,6 +1,8 @@
 package bg.su.fmi.fitness.assistant.entities;
 
-public class Workout {
+import java.io.Serializable;
+
+public class Workout implements Serializable {
 
 	private long id;
 	private String gender;

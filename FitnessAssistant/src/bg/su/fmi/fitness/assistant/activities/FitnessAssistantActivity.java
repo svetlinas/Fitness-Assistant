@@ -47,7 +47,7 @@ public class FitnessAssistantActivity extends AudioPlayerController {
     public void openWorkoutActivity(View view)
     {
 //    	TODO
-    	Intent intent = new Intent(this, ExercisesActivity.class);
+    	Intent intent = new Intent(this, WorkoutsActivity.class);
     	startActivity(intent);
     	System.out.println("workout");
     }

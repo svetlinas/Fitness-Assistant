@@ -33,7 +33,11 @@
         <activity
             android:name=".activities.ViewExerciseActivity"
             android:label="View Exercise" />
->
+		
+		<activity android:name=".activities.WorkoutsActivity" />
+        <activity android:name=".activities.ViewWorkoutActivity" />
+        <activity android:name=".activities.NewWorkoutActivity" />
+        <activity android:name=".activities.NewDayActivity" />
     </application>
 
 </manifest>

@@ -19,7 +19,19 @@ public final class Tools {
 	public static final int EDIT_EXERCISE_REQUEST_CODE = 2;
 
 	public static final int NEW_EXERCISE_REQUEST_CODE = 3;
-
+	
+	public static final int START_VIEW_WORKOUT_REQUEST_CODE = 100;
+	public static final int EDIT_WORKOUT_REQUEST_CODE = 101;
+	public static final int NEW_WORKOUT_REQUEST_CODE = 102;
+	public static final int NEW_DAY_REQUEST_CODE = 103;
+	public static final String CURRENT_WORKOUT_EXTRA = "currentWorkout";
+	public static final String DELETED_WORKOUT_EXTRA = "deletedWorkout";
+	public static final String EDITED_WORKOUT_EXTRA = "editedWorkout";
+	public static final String OLD_WORKOUT_EXTRA = "oldWorkout";
+	public static final String NEW_WORKOUT_EXTRA = "newWorkout";
+	public static final String NEW_DAY_NUMBER_EXTRA = "newDayNumber";
+	public static final String NEW_DAY_EXTRA = "newDay";
+	
 	private Tools() {
 		// no instances
 	}

@@ -8,5 +8,7 @@
     <string name="edit_button">Edit</string>
     <string name="delete_button">Delete</string>
     <string name="new_exercise_name">New Exercise</string>
+    
+    <string name="view_exercises_button">Exercises</string>
 
 </resources>
