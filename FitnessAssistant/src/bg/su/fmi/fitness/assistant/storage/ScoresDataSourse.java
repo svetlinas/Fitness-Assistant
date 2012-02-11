@@ -15,24 +15,25 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import bg.su.fmi.fitness.assistant.entities.Score;
-import bg.su.fmi.fitness.assistant.storage.helper.ScoresSQLiteHelper;
+import bg.su.fmi.fitness.assistant.storage.helper.BaseSQLiteHelper;
 
 public class ScoresDataSourse {
 	private SQLiteDatabase database;
-	private ScoresSQLiteHelper dbHelper;
+	private BaseSQLiteHelper dbHelper;
 	private String[] allColumns = { COLUMN_ID, COLUMN_WORKOUT_ID, COLUMN_EXERSIZE_ID,
 			COLUMN_SET_NUMBER, COLUMN_WEIGHT, COLUMN_TIME, COLUMN_CREATED};
 
 	public ScoresDataSourse(Context context) {
-		dbHelper = new ScoresSQLiteHelper(context);
+		dbHelper = new BaseSQLiteHelper(context);
 	}
 
 	public void open() {
-		database = dbHelper.getReadableDatabase();
+		database = dbHelper.getWritableDatabase();
 	}
 
 	public void close() {
@@ -54,6 +55,19 @@ public class ScoresDataSourse {
 		return scores;
 	}
 
+	public void addScores(SQLiteDatabase database, long workoutId,
+			long exersizeId, int setNumber, double weight, Date time,
+			Date created) {
+		final ContentValues values = new ContentValues();
+		values.put(COLUMN_WORKOUT_ID, workoutId);
+		values.put(COLUMN_EXERSIZE_ID, exersizeId);
+		values.put(COLUMN_SET_NUMBER, setNumber);
+		values.put(COLUMN_WEIGHT, weight);
+		values.put(COLUMN_TIME, new SimpleDateFormat().format(time));
+		values.put(COLUMN_CREATED, new SimpleDateFormat().format(created));
+		database.insert(TABLE_NAME, null, values);
+	}
+	
 	private Score getScore(Cursor cursor) {
 		Date time = null;
 		Date created = null;

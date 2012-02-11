@@ -10,21 +10,22 @@ import static bg.su.fmi.fitness.assistant.storage.helper.WorkoutsSQLiteHelper.TA
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import bg.su.fmi.fitness.assistant.entities.Workout;
-import bg.su.fmi.fitness.assistant.storage.helper.WorkoutsSQLiteHelper;
+import bg.su.fmi.fitness.assistant.storage.helper.BaseSQLiteHelper;
 
 public class WorkoutsDataSourse {
 
 	private SQLiteDatabase database;
-	private WorkoutsSQLiteHelper dbHelper;
+	private BaseSQLiteHelper dbHelper;
 	private String[] allColumns = { COLUMN_ID, COLUMN_GENDER, COLUMN_TYPE,
 			COLUMN_DURATION, COLUMN_NAME };
 
 	public WorkoutsDataSourse(Context context) {
-		dbHelper = new WorkoutsSQLiteHelper(context);
+		dbHelper = new BaseSQLiteHelper(context);
 	}
 
 	public void open() {
@@ -55,6 +56,14 @@ public class WorkoutsDataSourse {
 				cursor.getString(2), cursor.getInt(3), cursor.getString(4));
 	}
 	
+	public void addWorkout(String name, String gender, String type, int duration) {
+		final ContentValues values = new ContentValues();
+		values.put(COLUMN_GENDER, gender);
+		values.put(COLUMN_TYPE, type);
+		values.put(COLUMN_DURATION, duration);
+		values.put(COLUMN_NAME, name);
+		database.insert(TABLE_NAME, null, values);
+	}
 	
 	public int deleteWorkout(long id) {
 		return database.delete(TABLE_NAME, COLUMN_ID + "=?", new String[] { id

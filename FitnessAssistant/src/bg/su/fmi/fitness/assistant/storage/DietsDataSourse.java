@@ -15,21 +15,21 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import bg.su.fmi.fitness.assistant.entities.Diet;
-import bg.su.fmi.fitness.assistant.storage.helper.DietsSQLiteHelper;
+import bg.su.fmi.fitness.assistant.storage.helper.BaseSQLiteHelper;
 
 public class DietsDataSourse {
 
 	private SQLiteDatabase database;
-	private DietsSQLiteHelper dbHelper;
+	private BaseSQLiteHelper dbHelper;
 	private String[] allColumns = { COLUMN_ID, COLUMN_TYPE, COLUMN_DURATION,
 			COLUMN_NAME, COLUMN_DESCRIPTION };
 
 	public DietsDataSourse(Context context) {
-		dbHelper = new DietsSQLiteHelper(context);
+		dbHelper = new BaseSQLiteHelper(context);
 	}
 
 	public void open() {
-		database = dbHelper.getReadableDatabase();
+		database = dbHelper.getWritableDatabase();
 	}
 
 	public void close() {

@@ -1,15 +1,14 @@
 package bg.su.fmi.fitness.assistant.storage.helper;
 
-import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 /**
- * This class creates the table in the database which is 
- * responsible for the storage of exercises.
+ * This class contains information about the table's creation 
+ * in the database and some constants.
  *
  */
-public class ExersizesSQLiteHelper extends BaseSQLiteHelper {
+public class ExersizesSQLiteHelper {
 
 	public static final String TABLE_NAME = "exersizes";
 	public static final String COLUMN_ID = "_id";
@@ -26,22 +25,16 @@ public class ExersizesSQLiteHelper extends BaseSQLiteHelper {
 			+ " integer not null, " + COLUMN_DISCRIPTION + " text not null, "
 			+ COLUMN_VIDEO + " text not null);";
 
-	public ExersizesSQLiteHelper(Context context) {
-		super(context);
-	}
-
-	@Override
-	public void onCreate(SQLiteDatabase database) {
+	public static void onCreate(SQLiteDatabase database) {
 		database.execSQL(TABLE_CREATE);
 	}
 
-	@Override
-	public void onUpgrade(SQLiteDatabase database, int oldVersion,
+	public static void onUpgrade(SQLiteDatabase database, int oldVersion,
 			int newVersion) {
 		Log.w(ExersizesSQLiteHelper.class.getName(),
 				"Upgrading database from version " + oldVersion + " to "
 						+ newVersion + ", which will destroy all old data");
-		database.execSQL("DROP TABLE IF EXISTS" + TABLE_NAME);
+		database.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME + ";");
 		onCreate(database);
 	}
 

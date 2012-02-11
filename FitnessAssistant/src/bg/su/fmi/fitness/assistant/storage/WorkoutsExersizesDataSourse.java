@@ -13,25 +13,26 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import bg.su.fmi.fitness.assistant.entities.WorkoutExersize;
-import bg.su.fmi.fitness.assistant.storage.helper.WorkoutsExersizesSQLiteHelper;
+import bg.su.fmi.fitness.assistant.storage.helper.BaseSQLiteHelper;
 
 public class WorkoutsExersizesDataSourse {
 
 	private SQLiteDatabase database;
-	private WorkoutsExersizesSQLiteHelper dbHelper;
+	private BaseSQLiteHelper dbHelper;
 	private String[] allColumns = { COLUMN_ID, COLUMN_WORKOUT_ID,
 			COLUMN_EXERSIZE_ID, COLUMN_DAY, COLUMN_DAY_CREATED };
 
 	public WorkoutsExersizesDataSourse(Context context) {
-		dbHelper = new WorkoutsExersizesSQLiteHelper(context);
+		dbHelper = new BaseSQLiteHelper(context);
 	}
 
 	public void open() {
-		database = dbHelper.getReadableDatabase();
+		database = dbHelper.getWritableDatabase();
 	}
 
 	public void close() {
@@ -52,6 +53,15 @@ public class WorkoutsExersizesDataSourse {
 
 		return workoutsExersizes;
 	}
+	
+	public void addInformationToDatabase(SQLiteDatabase database, long workoutId, long exersizeId, int day, Date created){
+		final ContentValues values = new ContentValues();
+		values.put(COLUMN_WORKOUT_ID, workoutId);
+		values.put(COLUMN_EXERSIZE_ID, exersizeId);
+		values.put(COLUMN_DAY, day);
+		values.put(COLUMN_DAY_CREATED, new SimpleDateFormat().format(created).toString());
+		database.insert(TABLE_NAME, null, values);
+	}
 
 	private WorkoutExersize getWorkoutExersize(Cursor cursor) {
 		Date dateCreated = null;
@@ -63,6 +73,5 @@ public class WorkoutsExersizesDataSourse {
 		return new WorkoutExersize(cursor.getLong(0), cursor.getLong(1),
 				cursor.getLong(2), cursor.getInt(3), dateCreated);
 	}
-	
 	
 }

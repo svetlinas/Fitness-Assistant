@@ -17,21 +17,21 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import bg.su.fmi.fitness.assistant.entities.Exersize;
 import bg.su.fmi.fitness.assistant.entities.SearchedObject;
-import bg.su.fmi.fitness.assistant.storage.helper.ExersizesSQLiteHelper;
+import bg.su.fmi.fitness.assistant.storage.helper.BaseSQLiteHelper;
 
 public class ExersizesDataSourse {
 
 	private SQLiteDatabase database;
-	private ExersizesSQLiteHelper dbHelper;
+	private BaseSQLiteHelper dbHelper;
 	private String[] allColumns = { COLUMN_ID, COLUMN_NAME, COLUMN_SETS,
 			COLUMN_REPETITIONS, COLUMN_DISCRIPTION, COLUMN_VIDEO };
 
 	public ExersizesDataSourse(Context context) {
-		dbHelper = new ExersizesSQLiteHelper(context);
+		dbHelper = new BaseSQLiteHelper(context);
 	}
 
 	public void open() {
-		database = dbHelper.getReadableDatabase();
+		database = dbHelper.getWritableDatabase();
 	}
 
 	public void close() {
