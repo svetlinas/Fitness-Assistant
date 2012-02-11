@@ -77,9 +77,11 @@ public class WorkoutsDataSourse {
 	 */
 	public List<SearchedObject> getSearchedWorkouts(String workoutName) {
 		List<SearchedObject> result = new ArrayList<SearchedObject>();
+		
+		String nameSearchParam = "%" + workoutName + "%";
 
 		Cursor cursor = database.query(TABLE_NAME, allColumns, COLUMN_NAME
-				+ "=?", new String[] { workoutName }, null, null, null);
+				+ " LIKE ?", new String[] { nameSearchParam }, null, null, null);
 		cursor.moveToFirst();
 		while(!cursor.isAfterLast()) {
 			final SearchedObject searchedObject = getSearchedObject(cursor);

@@ -80,12 +80,12 @@ public class SearchActivity extends ListActivity{
 				}
 				else if(searchedObjects.get(position).getType() == "Workout") {
 					Intent intent = new Intent(parent.getContext(), ViewWorkoutActivity.class);
-					intent.putExtra(Tools.CURRENT_DIET_EXTRA, getWorkout(searchedObjects.get(position).getId()));
+					intent.putExtra(Tools.CURRENT_WORKOUT_EXTRA, getWorkout(searchedObjects.get(position).getId()));
 					startActivity(intent);
 				}
 				else if(searchedObjects.get(position).getType() == "Exersize") {
 					Intent intent = new Intent(parent.getContext(), ViewExerciseActivity.class);
-					intent.putExtra(Tools.CURRENT_DIET_EXTRA, getExersize(searchedObjects.get(position).getId()));
+					intent.putExtra(Tools.CURRENT_EXERCISE_EXTRA, getExersize(searchedObjects.get(position).getId()));
 					startActivity(intent);
 				}
 			}

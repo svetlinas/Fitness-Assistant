@@ -5,18 +5,10 @@
     android:layout_height="fill_parent"
     android:stretchColumns="1" >
 
-    <TableRow>
-
-        <TextView android:text="Ex1 name" />
-
-        <TextView android:text="Ex2 name" />
-    </TableRow>
-
-    <TableRow>
-
-        <TextView android:text="weight: 30" />
-
-        <TextView android:text="weight: 35" />
-    </TableRow>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="okButtonClicked"
+        android:text="Ok" />
 
 </TableLayout>

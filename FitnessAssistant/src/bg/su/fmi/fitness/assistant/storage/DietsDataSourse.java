@@ -91,8 +91,10 @@ public class DietsDataSourse {
 	public List<SearchedObject> getSearchedDiets(String dietName) {
 		List<SearchedObject> result = new ArrayList<SearchedObject>();
 
+		String nameSearchParam = "%" + dietName + "%";
+		
 		Cursor cursor = database.query(TABLE_NAME, allColumns, COLUMN_NAME
-				+ "=?", new String[] { dietName }, null, null, null);
+				+ " LIKE ?", new String[] { nameSearchParam }, null, null, null);
 		cursor.moveToFirst();
 		while(!cursor.isAfterLast()) {
 			final SearchedObject searchedObject = getSearchedObject(cursor);

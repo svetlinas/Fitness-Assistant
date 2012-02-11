@@ -93,10 +93,12 @@ public class ExersizesDataSourse {
 	 * @return List of SearchedObject
 	 */
 	public List<SearchedObject> getSearchedExersizes(String exersizeName) {
+		String nameSearchParam = "%" + exersizeName + "%";
+		
 		List<SearchedObject> result = new ArrayList<SearchedObject>();
 
 		Cursor cursor = database.query(TABLE_NAME, allColumns, COLUMN_NAME
-				+ "=?", new String[] { exersizeName }, null, null, null);
+				+ " LIKE ?", new String[] { nameSearchParam }, null, null, null);
 		cursor.moveToFirst();
 		while(!cursor.isAfterLast()) {
 			final SearchedObject searchedObject = getSearchedObject(cursor);

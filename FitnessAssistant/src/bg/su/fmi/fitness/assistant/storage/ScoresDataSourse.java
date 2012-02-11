@@ -73,6 +73,22 @@ public class ScoresDataSourse {
 				score.getSetNumber(), score.getWeight(), score.getTime(),
 				score.getCreated());
 	}
+	
+	public List<Score> getScoresByDay(Date date) {
+		final List<Score> scores = new ArrayList<Score>();
+		final Cursor cursor = database.query(TABLE_NAME, allColumns,
+				COLUMN_CREATED + "=?",
+				new String[] { date.toString() }, null, null, null); //TODO: Maybe sql data
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			final Score score = getScore(cursor);
+			scores.add(score);
+			cursor.moveToNext();
+		}
+		cursor.close();
+
+		return scores;
+	}
 
 	private Score getScore(Cursor cursor) {
 		Date time = null;
