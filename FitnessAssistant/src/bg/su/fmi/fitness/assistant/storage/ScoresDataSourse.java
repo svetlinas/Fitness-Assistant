@@ -89,6 +89,22 @@ public class ScoresDataSourse {
 
 		return scores;
 	}
+	
+	public List<Score> getScoresByWorkoutId(long workoutId) {
+		final List<Score> scores = new ArrayList<Score>();
+		final Cursor cursor = database.query(TABLE_NAME, allColumns,
+				COLUMN_WORKOUT_ID + "=?",
+				new String[] { workoutId + "" }, null, null, null); 
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			final Score score = getScore(cursor);
+			scores.add(score);
+			cursor.moveToNext();
+		}
+		cursor.close();
+
+		return scores;
+	}
 
 	private Score getScore(Cursor cursor) {
 		Date time = null;

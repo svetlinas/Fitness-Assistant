@@ -15,6 +15,7 @@ import bg.su.fmi.fitness.assistant.entities.Exersize;
 import bg.su.fmi.fitness.assistant.entities.Score;
 import bg.su.fmi.fitness.assistant.storage.ExersizesDataSourse;
 import bg.su.fmi.fitness.assistant.storage.ScoresDataSourse;
+import bg.su.fmi.fitness.assistant.util.Tools;
 
 public class CompareWorkoutsActivity extends Activity {
 
@@ -42,11 +43,10 @@ public class CompareWorkoutsActivity extends Activity {
 		setContentView(R.layout.compare_results);
 
 		Intent intent = getIntent();
-		Date created = (Date) intent.getSerializableExtra("scoresCreated");
+		Date created = (Date) intent.getSerializableExtra(Tools.SCORES_CREATED_EXTRA);
 		Date oldCreated = (Date) intent
-				.getSerializableExtra("oldScoresCreated"); // TODO: Get it from
-															// the list with
-															// workouts
+				.getSerializableExtra(Tools.OLD_SCORES_CREATED_EXTRA);
+
 		getScoresDataSource().open();
 		getExerciseDataSource().open();
 		List<Score> newScores = getScoresDataSource().getScoresByDay(created);
@@ -108,7 +108,7 @@ public class CompareWorkoutsActivity extends Activity {
 		table.addView(rowWeights);
 		table.addView(rowTimes);
 	}
-	
+
 	public void okButtonClicked() {
 		finish();
 	}

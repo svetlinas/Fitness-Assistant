@@ -23,7 +23,7 @@ public class LiveWorkoutDayActivity extends Activity {
 	private WorkoutsExersizesDataSourse WEDataSource;
 
 	private ExersizesDataSourse exerciseDataSource;
-	
+
 	private ScoresDataSourse scoresDataSource;
 
 	private WorkoutExersize currentWorkoutExercise;
@@ -35,8 +35,8 @@ public class LiveWorkoutDayActivity extends Activity {
 	private List<Exersize> exercisesForDay;
 
 	private List<Score> scores;
-	
-	private Date created; 
+
+	private Date created;
 
 	public WorkoutsExersizesDataSourse getWEDataSource() {
 		if (WEDataSource == null) {
@@ -51,7 +51,7 @@ public class LiveWorkoutDayActivity extends Activity {
 		}
 		return exerciseDataSource;
 	}
-	
+
 	public ScoresDataSourse getScoresDataSource() {
 		if (scoresDataSource == null) {
 			scoresDataSource = new ScoresDataSourse(this);
@@ -66,7 +66,7 @@ public class LiveWorkoutDayActivity extends Activity {
 
 		scores = new ArrayList<Score>();
 		created = new Date();
-		
+
 		Intent intent = getIntent();
 		currentWorkoutExercise = (WorkoutExersize) intent
 				.getSerializableExtra("currentWorkoutExercise");
@@ -103,8 +103,10 @@ public class LiveWorkoutDayActivity extends Activity {
 	}
 
 	private void startTimerWeightActivity() {
-		Intent intent = new Intent(this, TimerWeightActivity.class);
-		startActivityForResult(intent, Tools.START_TIMER_EXERCISE_REQUEST_CODE);
+		// TODO: start appropriate timer weight activity here
+		// Intent intent = new Intent(this, TimerWeightActivity.class);
+		// startActivityForResult(intent,
+		// Tools.START_TIMER_EXERCISE_REQUEST_CODE);
 	}
 
 	@Override
@@ -135,11 +137,13 @@ public class LiveWorkoutDayActivity extends Activity {
 				// If no more exercises -> write Scores to DB and go to compare
 				// activity
 				getScoresDataSource().open();
-				for(Score score : scores) {
+				for (Score score : scores) {
 					getScoresDataSource().addScore(score);
 				}
-				Intent intent = new Intent(this, CompareWorkoutsActivity.class);
-				intent.putExtra("scoresCreated", created);
+				Intent intent = new Intent(this, ListWorkoutsTypeActivity.class);
+				intent.putExtra(Tools.SCORES_CREATED_EXTRA, created);
+				intent.putExtra(Tools.WORKOUT_ID_EXTRA,
+						currentWorkoutExercise.getWorkoutId());
 				startActivity(intent);
 
 			}
