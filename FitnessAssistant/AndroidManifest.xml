@@ -13,6 +13,7 @@
         android:label="@string/app_name" >
         <activity
             android:name=".activities.FitnessAssistantActivity"
+            android:configChanges="orientation"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +23,7 @@
         </activity>
         <activity android:name=".activities.SearchActivity" >
         </activity>
-        <activity android:name=".activities.PlaylistActivity" >
+        <activity android:name=".activities.PlaylistActivity">
         </activity>
         <activity
             android:name=".activities.ExercisesActivity"

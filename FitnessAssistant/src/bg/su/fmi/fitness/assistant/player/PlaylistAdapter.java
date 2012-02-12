@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import bg.su.fmi.fitness.assistant.R;
 import bg.su.fmi.fitness.assistant.R.id;
 import bg.su.fmi.fitness.assistant.R.layout;
+import bg.su.fmi.fitness.assistant.util.Tools;
 
 import android.app.Activity;
 import android.content.Context;
@@ -45,7 +46,7 @@ public class PlaylistAdapter extends ArrayAdapter<TrackInfo> {
 							public void onClick(View v) {
 								Intent i = new Intent();
 								i.putExtra(PATH, o.getPath());
-								parentActivity.setResult(1, i);
+								parentActivity.setResult(Tools.AUDIO_TRACKS_RESULT_CODE, i);
 								parentActivity.finish();						
 							}
 						});

@@ -6,15 +6,22 @@ import bg.su.fmi.fitness.assistant.R;
 import bg.su.fmi.fitness.assistant.R.layout;
 import bg.su.fmi.fitness.assistant.player.PlaylistAdapter;
 import bg.su.fmi.fitness.assistant.player.TrackInfo;
+import bg.su.fmi.fitness.assistant.util.Tools;
 
 import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.ContentResolver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
-public class PlaylistActivity extends ListActivity {
+
+public class PlaylistActivity extends ListActivity implements OnCancelListener {
+	
+	private static final String NO_SD_CARD_MESSAGE = "No SD card!";
+	private static final String NO_AUDIO_TRACKS_MESSAGE = "No audio tracks!";
 	
 	private ArrayList<TrackInfo> tracks;
 	private LayoutInflater inflater;
@@ -42,19 +49,33 @@ public class PlaylistActivity extends ListActivity {
 		cursor = resolver.query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
 				projection, null, null, null);
 		if (cursor == null) {
-			Dialog noCardDialog = new Dialog(this);
-			noCardDialog.setTitle("No external cd card !!!");
-			noCardDialog.show();
+			showNoAudioTracksDialog(NO_SD_CARD_MESSAGE);
 			return tracks;
 		}
-		cursor.moveToFirst();
-		while (!cursor.isLast()) {
-			path = cursor.getString(0);
-			name = cursor.getString(1);
-			tracks.add(new TrackInfo(name, path));
-			cursor.moveToNext();
-		}
+		if (cursor.moveToFirst()) {
+			while (!cursor.isLast()) {
+				path = cursor.getString(0);
+				name = cursor.getString(1);
+				tracks.add(new TrackInfo(name, path));
+				cursor.moveToNext();
+			}			
+		} else {
+			showNoAudioTracksDialog(NO_AUDIO_TRACKS_MESSAGE);
+		}		
 		return tracks;
+	}
+	
+	private void showNoAudioTracksDialog(String message) {
+		Dialog dialog = new Dialog(this);
+	    dialog.setCancelable(true);
+	    dialog.setOnCancelListener(this);
+		dialog.setTitle(message);
+		dialog.show();
+	}
+
+	public void onCancel(DialogInterface dialog) {
+		setResult(Tools.NO_AUDIO_TRACKS_RESULT_CODE, null);
+		finish();	
 	}
 		
 }

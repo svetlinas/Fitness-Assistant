@@ -1,6 +1,7 @@
 package bg.su.fmi.fitness.assistant.player;
 
 import bg.su.fmi.fitness.assistant.activities.PlaylistActivity;
+import bg.su.fmi.fitness.assistant.util.Tools;
 import android.app.Activity;
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -24,7 +25,7 @@ public class AudioPlayerController extends Activity {
 	}
 		
 	public void playHandler(View view) {
-    	if (!mediaPlayer.isPlaying()) {
+    	if (!mediaPlayer.isPlaying() && currentTrack != null) {
     		try {
     			if (!isPaused) {
     				mediaPlayer.reset();
@@ -69,7 +70,7 @@ public class AudioPlayerController extends Activity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		if (data == null) {
+		if (resultCode == Tools.NO_AUDIO_TRACKS_RESULT_CODE) {
 			return;
 		}
 		try {
@@ -89,8 +90,10 @@ public class AudioPlayerController extends Activity {
 	@Override
 	protected void onRestart() {
 		super.onRestart();
-		mediaPlayer.start();
-		isPaused = false;				
+		if (currentTrack != null) {
+			mediaPlayer.start();
+			isPaused = false;				
+		}
 	}
 	
 	@Override

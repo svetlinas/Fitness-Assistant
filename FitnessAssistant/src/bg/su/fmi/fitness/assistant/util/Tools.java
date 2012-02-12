@@ -75,6 +75,10 @@ public final class Tools {
 	public static final String EDIT_WORKOUT_DAYS_EXTRA = "editWorkoutDays";
 	public static final String EDITED_WORKOUT_DAYS_EXTRA = "editedWorkoutDaysExtra";
 
+	public static final int AUDIO_TRACKS_RESULT_CODE = 200;
+	
+	public static final int NO_AUDIO_TRACKS_RESULT_CODE = 201;
+	
 	private Tools() {
 		// no instances
 	}
