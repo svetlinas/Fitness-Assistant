@@ -100,6 +100,11 @@ public class ViewWorkoutActivity extends ListActivity{
 		Day day = (Day)view.getTag();
 		Log.v("livetime", Integer.toString(day.getNumber()));
 		//TODO start LiveTimeWorkout from here
+		Intent intent = new Intent(this, LiveWorkoutDayActivity.class);
+		intent.putExtra("workout", workout); //TODO: put 
+		intent.putExtra("workoutDay", day.getNumber());
+		startActivity(intent);
+		
 	}
 	
 	private void loadFields()

@@ -5,8 +5,10 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -43,7 +45,8 @@ public class CompareWorkoutsActivity extends Activity {
 		setContentView(R.layout.compare_results);
 
 		Intent intent = getIntent();
-		Date created = (Date) intent.getSerializableExtra(Tools.SCORES_CREATED_EXTRA);
+		Date created = (Date) intent
+				.getSerializableExtra(Tools.SCORES_CREATED_EXTRA);
 		Date oldCreated = (Date) intent
 				.getSerializableExtra(Tools.OLD_SCORES_CREATED_EXTRA);
 
@@ -77,10 +80,11 @@ public class CompareWorkoutsActivity extends Activity {
 		TextView nameFirst = new TextView(this);
 		nameFirst.setText(firstExercise.getName());
 		nameFirst.setTextSize(15);
+		nameFirst.setTextColor(Color.parseColor("#FFFFCC"));
 		TextView nameSecond = new TextView(this);
 		nameSecond.setText(secondExercise.getName());
 		nameSecond.setTextSize(15);
-		nameSecond.setGravity(Gravity.RIGHT);
+		nameSecond.setTextColor(Color.parseColor("#FFFFCC"));
 		rowNames.addView(nameFirst);
 		rowNames.addView(nameSecond);
 
@@ -90,26 +94,28 @@ public class CompareWorkoutsActivity extends Activity {
 		weightFirst.setText("Weight: " + first.getWeight());
 		TextView weightSecond = new TextView(this);
 		weightSecond.setText("Weight: " + second.getWeight());
-		weightSecond.setGravity(Gravity.RIGHT);
 		rowWeights.addView(weightFirst);
 		rowWeights.addView(weightSecond);
 
 		// Add Time
 		TableRow rowTimes = new TableRow(this);
 		TextView timeFirst = new TextView(this);
-		timeFirst.setText("Time: " + first.getTime());
+		timeFirst.setText("Time: " + /*TODO first.getTime()*/ 125);
 		TextView timeSecond = new TextView(this);
 		timeSecond.setText("Time: " + second.getTime());
-		timeSecond.setGravity(Gravity.RIGHT);
 		rowTimes.addView(timeFirst);
 		rowTimes.addView(timeSecond);
 
+		nameSecond.setPadding(10, 0, 0, 0);
+		weightFirst.setPadding(10, 0, 0, 0);
+		timeFirst.setPadding(10, 0, 0, 0);
+		
 		table.addView(rowNames);
 		table.addView(rowWeights);
 		table.addView(rowTimes);
 	}
 
-	public void okButtonClicked() {
+	public void okButtonClicked(View view) {
 		finish();
 	}
 

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import bg.su.fmi.fitness.assistant.R;
 import bg.su.fmi.fitness.assistant.entities.Exersize;
 import bg.su.fmi.fitness.assistant.entities.Score;
+import bg.su.fmi.fitness.assistant.entities.Workout;
 import bg.su.fmi.fitness.assistant.entities.WorkoutExersize;
 import bg.su.fmi.fitness.assistant.storage.ExersizesDataSourse;
 import bg.su.fmi.fitness.assistant.storage.ScoresDataSourse;
@@ -26,7 +27,9 @@ public class LiveWorkoutDayActivity extends Activity {
 
 	private ScoresDataSourse scoresDataSource;
 
-	private WorkoutExersize currentWorkoutExercise;
+	// private WorkoutExersize currentWorkoutExercise;
+
+	private Workout workout;
 
 	private Exersize currentExercise;
 
@@ -37,6 +40,8 @@ public class LiveWorkoutDayActivity extends Activity {
 	private List<Score> scores;
 
 	private Date created;
+
+	private int day;
 
 	public WorkoutsExersizesDataSourse getWEDataSource() {
 		if (WEDataSource == null) {
@@ -68,19 +73,15 @@ public class LiveWorkoutDayActivity extends Activity {
 		created = new Date();
 
 		Intent intent = getIntent();
-		currentWorkoutExercise = (WorkoutExersize) intent
-				.getSerializableExtra("currentWorkoutExercise");
-		int days = currentWorkoutExercise.getDays();
-		for (int day = 1; day <= days; day++) {
-			exercisesForDay = getAllExercisesForWorkoutInDay(
-					currentWorkoutExercise.getWorkoutId(), day);
-			for (Exersize exercise : exercisesForDay) {
-				loadDataFields(currentWorkoutExercise.getWorkoutId() + "NAmee",
-						day, exercise.getName(), exercise.getVideo(),
-						exercise.getSets(), exercise.getRepetitions(),
-						exercise.getDescription());
-			}
-		}
+		workout = (Workout) intent.getSerializableExtra("workout");
+		day = intent.getIntExtra("workoutDay", -1);
+		exercisesForDay = getAllExercisesForWorkoutInDay(workout.getId(), day);
+		currentExerciseNum = 0;
+		currentExercise = exercisesForDay.get(currentExerciseNum++);
+		loadDataFields(workout.getName(), day, currentExercise.getName(),
+				currentExercise.getVideo(), currentExercise.getSets(),
+				currentExercise.getRepetitions(),
+				currentExercise.getDescription());
 	}
 
 	private List<Exersize> getAllExercisesForWorkoutInDay(long workoutId,
@@ -98,7 +99,6 @@ public class LiveWorkoutDayActivity extends Activity {
 	}
 
 	public void startButtonClicked(View view) {
-		currentExerciseNum = 1;
 		startTimerWeightActivity();
 	}
 
@@ -107,6 +107,14 @@ public class LiveWorkoutDayActivity extends Activity {
 		// Intent intent = new Intent(this, TimerWeightActivity.class);
 		// startActivityForResult(intent,
 		// Tools.START_TIMER_EXERCISE_REQUEST_CODE);
+		fake();
+	}
+
+	private void fake() { // TODO change with timer activity
+		Intent i = new Intent();
+		i.putExtra("maxWeight", 8.5);
+		i.putExtra("timeExercise", 1235454);
+		onActivityResult(Tools.START_TIMER_EXERCISE_REQUEST_CODE, RESULT_OK, i);
 	}
 
 	@Override
@@ -119,16 +127,14 @@ public class LiveWorkoutDayActivity extends Activity {
 			Long time = data.getLongExtra("timeExercise", -1); // TODO: Change
 
 			// TODO: Check 0 params and new Date(time)
-			scores.add(new Score(0, currentWorkoutExercise.getWorkoutId(),
-					currentExercise.getId(), 0, maxWeight, new Date(time),
-					created));
+			scores.add(new Score(0, workout.getId(), currentExercise.getId(),
+					0, maxWeight, new Date(time), created)); //TODO new Date(time) should be something else. Also change the time in the DB to be long or so
 
 			if (currentExerciseNum < exercisesForDay.size()) {
 				// If there are more exercises -> get the next one and reload UI
 				// with the new data
 				currentExercise = exercisesForDay.get(currentExerciseNum++);
-				loadDataFields(currentWorkoutExercise.getWorkoutId() + "NAmee",
-						currentWorkoutExercise.getDays(),
+				loadDataFields(workout.getName(), day,
 						currentExercise.getName(), currentExercise.getVideo(),
 						currentExercise.getSets(),
 						currentExercise.getRepetitions(),
@@ -142,12 +148,9 @@ public class LiveWorkoutDayActivity extends Activity {
 				}
 				Intent intent = new Intent(this, ListWorkoutsTypeActivity.class);
 				intent.putExtra(Tools.SCORES_CREATED_EXTRA, created);
-				intent.putExtra(Tools.WORKOUT_ID_EXTRA,
-						currentWorkoutExercise.getWorkoutId());
+				intent.putExtra(Tools.WORKOUT_ID_EXTRA, workout.getId());
 				startActivity(intent);
-
 			}
-
 		}
 	}
 
@@ -162,11 +165,11 @@ public class LiveWorkoutDayActivity extends Activity {
 		final TextView repetitions = (TextView) findViewById(R.id.live_exercise_repetitions_content);
 		final TextView description = (TextView) findViewById(R.id.live_exercise_description_content);
 		workoutName.setText(workoutNameValue);
-		workoutDay.setText(workoutDayValue);
+		workoutDay.setText("Day " + Tools.stringIntegerValue(workoutDayValue));
 		exerciseName.setText(exerciseNameValue);
 		video.setText(videoValue);
-		sets.setText(setsValue);
-		repetitions.setText(repetitionsValue);
+		sets.setText(Tools.stringIntegerValue(setsValue));
+		repetitions.setText(Tools.stringIntegerValue(repetitionsValue));
 		description.setText(descriptionValue);
 	}
 

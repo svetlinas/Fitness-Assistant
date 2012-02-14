@@ -78,7 +78,7 @@ public class ScoresDataSourse {
 		final List<Score> scores = new ArrayList<Score>();
 		final Cursor cursor = database.query(TABLE_NAME, allColumns,
 				COLUMN_CREATED + "=?",
-				new String[] { date.toString() }, null, null, null); //TODO: Maybe sql data
+				new String[] { new SimpleDateFormat().format(date) }, null, null, null); //TODO: Maybe sql data
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
 			final Score score = getScore(cursor);

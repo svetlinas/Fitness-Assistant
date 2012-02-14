@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import bg.su.fmi.fitness.assistant.entities.Exersize;
-import bg.su.fmi.fitness.assistant.entities.Workout;
 
 public class Day implements Serializable{
 	private static final long serialVersionUID = 9206226494418505604L;
