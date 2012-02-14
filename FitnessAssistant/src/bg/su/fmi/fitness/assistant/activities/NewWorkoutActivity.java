@@ -130,11 +130,11 @@ public class NewWorkoutActivity extends ListActivity{
 		{
 			for(Exersize e : day.getExercises())
 			{
-				Log.v("sad", Integer.toString(day.getNumber()));
-				//TODO fix this
 				getWeDataSource().addWorkoutExercise(workout.getId(), e.getId(), day.getNumber());
 			}
 		}
+		getDataSource().close();
+		getWeDataSource().close();
 		setResult(RESULT_OK, intent);
 		finish();
 	}
@@ -202,6 +202,7 @@ public class NewWorkoutActivity extends ListActivity{
 	public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
 		if(requestCode == Tools.NEW_DAY_REQUEST_CODE)
+		{
           if (resultCode == RESULT_OK) 
           {
               Day day = (Day)data.getSerializableExtra(Tools.NEW_DAY_EXTRA);
@@ -209,13 +210,17 @@ public class NewWorkoutActivity extends ListActivity{
               adapter.notifyDataSetChanged();
            
           }
-          if(resultCode == RESULT_CANCELED)
-          {
-        	  //finish();
-          }
+		}
         if(requestCode == Tools.EDIT_DAY_REQUEST_CODE && resultCode == RESULT_OK)
         {
-        	
+        	Day day = (Day)data.getSerializableExtra(Tools.EDITED_DAY_EXTRA);
+        	if(day != null)
+        	{
+	        	int index = days.indexOf(day);
+	        	//Log.v("edit day", Integer.toString(day.getExercises().size()));
+	        	days.set(index, day);
+	        	adapter.notifyDataSetChanged();
+        	}
         }
     } 
 	

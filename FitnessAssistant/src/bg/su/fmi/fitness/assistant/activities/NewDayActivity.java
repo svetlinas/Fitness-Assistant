@@ -11,6 +11,7 @@ import bg.su.fmi.fitness.assistant.util.Tools;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -54,16 +55,23 @@ public class NewDayActivity extends ListActivity{
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         
         
-        day = (Day)intent.getSerializableExtra("EDIT_DAY_EXTRA");
+        day = (Day)intent.getSerializableExtra(Tools.EDIT_DAY_EXTRA);
         if(day != null)
         {
         	editMode = true;
-        	//TODO show selected exercises
+        	for(Exersize e : day.getExercises())
+        	{
+        		setTitle("Edit Day");
+        		int position = exercises.indexOf(e);
+        		listView.setItemChecked(position, true);
+        	}
         }
         else
         {
+        	setTitle("New Day");
         	day = new Day(getIntent().getIntExtra(Tools.NEW_DAY_NUMBER_EXTRA, 1));
         }
+        
 	}
 	
 	
@@ -72,18 +80,31 @@ public class NewDayActivity extends ListActivity{
 		ArrayList<Exersize> result = new ArrayList<Exersize>();
 		ListView listView = getListView();
 		SparseBooleanArray selectedExercises = listView.getCheckedItemPositions();
+		
 		for(int i = 0; i < selectedExercises.size(); i++)
 		{
-			if(selectedExercises.get(i))
+			System.out.println(selectedExercises.valueAt(i));
+			if(selectedExercises.valueAt(i))
 			{
-				result.add((Exersize)getListAdapter().getItem(selectedExercises.indexOfKey(i)));
+				
+				result.add((Exersize)exercises.get(selectedExercises.keyAt(i)));
+				
 			}
 		}
 		
-		Intent resultIntent = new Intent();
+		
 		day.setExercises(result);
-		resultIntent.putExtra(Tools.NEW_DAY_EXTRA, day);
-		setResult(RESULT_OK,resultIntent);        
+		
+		if(editMode)
+		{
+			intent.putExtra(Tools.EDITED_DAY_EXTRA, day);
+		}
+		else
+		{
+			intent.putExtra(Tools.NEW_DAY_EXTRA, day);
+		}
+		
+		setResult(RESULT_OK,intent);        
 	    finish();
 	}
 	public void cancel(View view)
@@ -95,6 +116,7 @@ public class NewDayActivity extends ListActivity{
 	public List<Exersize> getAllExercises() {
 		getDataSource().open();
 		exercises = getDataSource().getAllExercises();
+		getDataSource().close();
 		return exercises;
 
 	}

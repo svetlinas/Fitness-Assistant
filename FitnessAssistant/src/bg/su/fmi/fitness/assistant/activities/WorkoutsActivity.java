@@ -5,6 +5,7 @@ import java.util.List;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -39,7 +40,7 @@ public class WorkoutsActivity extends ListActivity{
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.workouts);
-		
+		setTitle("Workouts");
 		workouts = getAllWorkouts();
 		arrayAdapter = new ArrayAdapter<Workout>(this,android.R.layout.simple_list_item_1, workouts);
 		
@@ -119,7 +120,8 @@ public class WorkoutsActivity extends ListActivity{
 			Workout deletedWorkout =(Workout) data.getSerializableExtra(Tools.DELETED_WORKOUT_EXTRA);
 			if(deletedWorkout != null)
 			{
-				arrayAdapter.remove(deletedWorkout);
+				Log.v("del",deletedWorkout.getType());
+				workouts.remove(deletedWorkout);
 				arrayAdapter.notifyDataSetChanged();
 			}
 			else
@@ -127,8 +129,9 @@ public class WorkoutsActivity extends ListActivity{
 				Workout editedWorkout = (Workout) data.getSerializableExtra(Tools.EDITED_WORKOUT_EXTRA);
 				if(editedWorkout != null)
 				{
-					arrayAdapter.remove((Workout) data.getSerializableExtra(Tools.OLD_WORKOUT_EXTRA));
-					arrayAdapter.add(editedWorkout);
+					Log.v("edit", editedWorkout.getType());
+					workouts.remove((Workout) data.getSerializableExtra(Tools.OLD_WORKOUT_EXTRA));
+					workouts.add(editedWorkout);
 					arrayAdapter.notifyDataSetChanged();
 				}
 			}
@@ -138,7 +141,8 @@ public class WorkoutsActivity extends ListActivity{
 			Workout newWorkout = (Workout) data.getSerializableExtra(Tools.NEW_WORKOUT_EXTRA);
 			if(newWorkout != null)
 			{
-				arrayAdapter.add(newWorkout);
+				workouts.add(newWorkout);
+				arrayAdapter.notifyDataSetChanged();
 			}
 		}
 	}

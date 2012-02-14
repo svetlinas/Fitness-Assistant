@@ -16,12 +16,17 @@ import bg.su.fmi.fitness.assistant.util.Tools;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
 
 
 public class ViewWorkoutActivity extends ListActivity{
@@ -65,18 +70,37 @@ public class ViewWorkoutActivity extends ListActivity{
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.view_workout);
-		
+		setTitle("View Workout");
 		intent = getIntent();
 		workout = (Workout) intent.getSerializableExtra(Tools.CURRENT_WORKOUT_EXTRA);
-		
+		intent.removeExtra(Tools.DELETED_WORKOUT_EXTRA);
 		loadFields();
 		
 		days = getWorkoutDays(workout.getId());
 		adapter = new DayAdapter(this, days);
 		setListAdapter(adapter);
-		//TODO start LiveTimeWorkout
+		
+		ListView lv = getListView();
+		lv.setTextFilterEnabled(true);
+		/*
+		lv.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				
+				Day item = (Day) getListAdapter().getItem(position);
+				//openLiveTimeWorkout(item);
+			}
+		});
+		*/
+		
 	}
 	
+	public void openLiveTimeWorkout(View view)
+	{
+		Day day = (Day)view.getTag();
+		Log.v("livetime", Integer.toString(day.getNumber()));
+		//TODO start LiveTimeWorkout from here
+	}
 	
 	private void loadFields()
 	{
@@ -105,7 +129,6 @@ public class ViewWorkoutActivity extends ListActivity{
 			intent.putExtra(Tools.EDIT_WORKOUT_EXTRA, workout);
 			intent.putExtra(Tools.EDIT_WORKOUT_DAYS_EXTRA, days);
 			startActivityForResult(intent, Tools.EDIT_WORKOUT_REQUEST_CODE);
-			//finish();
 			return true;
 		} else if(item.getItemId() == R.id.delete_workout)
 		{
@@ -169,6 +192,9 @@ public class ViewWorkoutActivity extends ListActivity{
 			days = (ArrayList<Day>) data.getSerializableExtra(Tools.EDITED_WORKOUT_DAYS_EXTRA);
 			setListAdapter(new DayAdapter(this,days));
 			loadFields();
+			intent.putExtra(Tools.OLD_WORKOUT_EXTRA, (Workout) data.getSerializableExtra(Tools.OLD_WORKOUT_EXTRA));
+			intent.putExtra(Tools.EDITED_WORKOUT_EXTRA, workout);
+			setResult(RESULT_OK, intent);
 		}
 	}
 }

@@ -24,19 +24,19 @@ public final class R {
     public static final class id {
         public static final int compare_table=0x7f070000;
         public static final int day_exercise_value=0x7f070001;
-        public static final int day_exercises=0x7f070046;
+        public static final int day_exercises=0x7f070047;
         public static final int day_repetitions_value=0x7f070003;
         public static final int day_sets_value=0x7f070002;
         public static final int day_vlaue=0x7f070045;
-        public static final int delete_diet=0x7f07004a;
-        public static final int delete_exercise=0x7f07004c;
-        public static final int delete_workout=0x7f07004e;
+        public static final int delete_diet=0x7f07004b;
+        public static final int delete_exercise=0x7f07004d;
+        public static final int delete_workout=0x7f07004f;
         public static final int dietButton=0x7f070005;
         public static final int duration_label=0x7f070043;
         public static final int duration_value=0x7f070044;
-        public static final int edit_diet=0x7f070049;
-        public static final int edit_exercise=0x7f07004b;
-        public static final int edit_workout=0x7f07004d;
+        public static final int edit_diet=0x7f07004a;
+        public static final int edit_exercise=0x7f07004c;
+        public static final int edit_workout=0x7f07004e;
         public static final int gender_label=0x7f07003f;
         public static final int gender_value=0x7f070040;
         public static final int live_exercise_description_content=0x7f070010;
@@ -52,7 +52,7 @@ public final class R {
         public static final int live_workout_name_content=0x7f070006;
         public static final int live_workout_start_exercise_button=0x7f070011;
         public static final int music=0x7f070029;
-        public static final int new_diet=0x7f070047;
+        public static final int new_diet=0x7f070048;
         public static final int new_diet_add_button=0x7f07001a;
         public static final int new_diet_description_field=0x7f070019;
         public static final int new_diet_description_label=0x7f070018;
@@ -62,7 +62,7 @@ public final class R {
         public static final int new_diet_name_label=0x7f070012;
         public static final int new_diet_type_field=0x7f070015;
         public static final int new_diet_type_label=0x7f070014;
-        public static final int new_exercise=0x7f070048;
+        public static final int new_exercise=0x7f070049;
         public static final int new_exercise_add_button=0x7f070025;
         public static final int new_exercise_description_field=0x7f070024;
         public static final int new_exercise_description_label=0x7f070023;
@@ -74,10 +74,11 @@ public final class R {
         public static final int new_exercise_sets_label=0x7f07001f;
         public static final int new_exercise_video_link_field=0x7f07001e;
         public static final int new_exercise_video_link_label=0x7f07001d;
-        public static final int new_workout=0x7f07004f;
+        public static final int new_workout=0x7f070050;
         public static final int search=0x7f07002d;
         public static final int searchButton=0x7f07002b;
         public static final int searchText=0x7f07002c;
+        public static final int start_live_time_button=0x7f070046;
         public static final int track_path=0x7f07002a;
         public static final int type_label=0x7f070041;
         public static final int type_value=0x7f070042;
@@ -97,7 +98,7 @@ public final class R {
         public static final int view_exercise_sets_label=0x7f070038;
         public static final int view_exercise_video_link_content=0x7f070037;
         public static final int view_exercise_video_link_label=0x7f070036;
-        public static final int view_exercises=0x7f070050;
+        public static final int view_exercises=0x7f070051;
         public static final int workoutButton=0x7f070004;
         public static final int workout_gender_field=0x7f070027;
         public static final int workout_name_content=0x7f07003e;

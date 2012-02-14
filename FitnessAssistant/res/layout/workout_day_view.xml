@@ -18,6 +18,14 @@
 	        android:id="@+id/day_vlaue"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content" />
+	        
+	    <Button
+	    	android:id="@+id/start_live_time_button"
+	    	android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:onClick="openLiveTimeWorkout"
+	        android:text="Start Workout" />
+	        
 	</LinearLayout>
 	
 	<LinearLayout

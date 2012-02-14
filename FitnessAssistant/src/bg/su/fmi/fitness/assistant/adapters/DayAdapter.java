@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -30,6 +31,9 @@ public class DayAdapter extends ArrayAdapter<Day>{
 		View rowView = inflater.inflate(R.layout.workout_day_view, parent, false);
 		TextView textView = (TextView) rowView.findViewById(R.id.day_vlaue);
 		textView.setText(Long.toString(values.get(position).getNumber()));
+		
+		Button button = (Button) rowView.findViewById(R.id.start_live_time_button);
+		button.setTag(values.get(position));
 		
 		LinearLayout exercisesList = (LinearLayout)rowView.findViewById(R.id.day_exercises);
 		exercisesList.removeAllViews();
