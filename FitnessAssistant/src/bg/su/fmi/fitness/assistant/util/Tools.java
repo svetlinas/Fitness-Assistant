@@ -84,6 +84,8 @@ public final class Tools {
 
 	public static final int NO_AUDIO_TRACKS_RESULT_CODE = 201;
 
+	public static final int AUDIO_PLAYER_REQUEST_CODE = 202;
+
 	private Tools() {
 		// no instances
 	}
