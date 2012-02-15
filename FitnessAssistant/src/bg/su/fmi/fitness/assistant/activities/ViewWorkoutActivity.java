@@ -3,6 +3,17 @@ package bg.su.fmi.fitness.assistant.activities;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.ListActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 import bg.su.fmi.fitness.assistant.R;
 import bg.su.fmi.fitness.assistant.adapters.Day;
 import bg.su.fmi.fitness.assistant.adapters.DayAdapter;
@@ -13,20 +24,6 @@ import bg.su.fmi.fitness.assistant.storage.ExersizesDataSourse;
 import bg.su.fmi.fitness.assistant.storage.WorkoutsDataSourse;
 import bg.su.fmi.fitness.assistant.storage.WorkoutsExersizesDataSourse;
 import bg.su.fmi.fitness.assistant.util.Tools;
-import android.app.ListActivity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
 
 public class ViewWorkoutActivity extends ListActivity{
@@ -99,9 +96,8 @@ public class ViewWorkoutActivity extends ListActivity{
 	{
 		Day day = (Day)view.getTag();
 		Log.v("livetime", Integer.toString(day.getNumber()));
-		//TODO start LiveTimeWorkout from here
 		Intent intent = new Intent(this, LiveWorkoutDayActivity.class);
-		intent.putExtra("workout", workout); //TODO: put 
+		intent.putExtra("workout", workout); 
 		intent.putExtra("workoutDay", day.getNumber());
 		startActivity(intent);
 		

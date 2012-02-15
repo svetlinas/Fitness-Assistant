@@ -5,16 +5,20 @@ import java.util.Date;
 
 public class Score implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9139838640850418929L;
 	private long id;
 	private long workoutId;
 	private long exersizeId;
 	private int setNumber;
 	private double weight;
-	private Date time;
+	private long time;
 	private Date created;
 	
 	public Score(long id, long workoutId, long exersizeId,
-			int setNumber, double weight, Date time, Date created) {
+			int setNumber, double weight, long time, Date created) {
 		super();
 		this.id = id;
 		this.workoutId = workoutId;
@@ -65,11 +69,11 @@ public class Score implements Serializable {
 		this.weight = weight;
 	}
 
-	public Date getTime() {
+	public long getTime() {
 		return time;
 	}
 
-	public void setTime(Date time) {
+	public void setTime(long time) {
 		this.time = time;
 	}
 

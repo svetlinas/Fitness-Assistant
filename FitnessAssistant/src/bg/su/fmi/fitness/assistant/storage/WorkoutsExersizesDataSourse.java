@@ -103,7 +103,7 @@ public class WorkoutsExersizesDataSourse {
 		values.put(COLUMN_WORKOUT_ID, workoutId);
 		values.put(COLUMN_EXERSIZE_ID,  exerciseId);
 		values.put(COLUMN_DAY, day);
-		values.put(COLUMN_DAY_CREATED, new SimpleDateFormat().toString());
+		values.put(COLUMN_DAY_CREATED, new SimpleDateFormat().format(new Date()).toString());
 		database.insert(TABLE_NAME, null, values);
 	}
 }

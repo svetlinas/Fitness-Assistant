@@ -1,13 +1,10 @@
 package bg.su.fmi.fitness.assistant.activities;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
@@ -17,13 +14,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import bg.su.fmi.fitness.assistant.R;
 import bg.su.fmi.fitness.assistant.adapters.Day;
-import bg.su.fmi.fitness.assistant.entities.Diet;
 import bg.su.fmi.fitness.assistant.entities.Exersize;
 import bg.su.fmi.fitness.assistant.entities.Workout;
-import bg.su.fmi.fitness.assistant.entities.WorkoutExersize;
 import bg.su.fmi.fitness.assistant.storage.ExersizesDataSourse;
 import bg.su.fmi.fitness.assistant.storage.WorkoutsDataSourse;
 import bg.su.fmi.fitness.assistant.storage.WorkoutsExersizesDataSourse;

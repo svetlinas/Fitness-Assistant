@@ -2,12 +2,6 @@ package bg.su.fmi.fitness.assistant.activities;
 
 import java.util.ArrayList;
 
-import bg.su.fmi.fitness.assistant.R;
-import bg.su.fmi.fitness.assistant.R.layout;
-import bg.su.fmi.fitness.assistant.player.PlaylistAdapter;
-import bg.su.fmi.fitness.assistant.player.TrackInfo;
-import bg.su.fmi.fitness.assistant.util.Tools;
-
 import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.ContentResolver;
@@ -17,6 +11,9 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
+import bg.su.fmi.fitness.assistant.player.PlaylistAdapter;
+import bg.su.fmi.fitness.assistant.player.TrackInfo;
+import bg.su.fmi.fitness.assistant.util.Tools;
 
 public class PlaylistActivity extends ListActivity implements OnCancelListener {
 	

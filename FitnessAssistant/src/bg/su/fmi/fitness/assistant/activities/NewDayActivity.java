@@ -3,19 +3,18 @@ package bg.su.fmi.fitness.assistant.activities;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.ListActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.SparseBooleanArray;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import bg.su.fmi.fitness.assistant.R;
 import bg.su.fmi.fitness.assistant.adapters.Day;
 import bg.su.fmi.fitness.assistant.entities.Exersize;
 import bg.su.fmi.fitness.assistant.storage.ExersizesDataSourse;
 import bg.su.fmi.fitness.assistant.util.Tools;
-import android.app.ListActivity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.util.SparseBooleanArray;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 public class NewDayActivity extends ListActivity{
 	

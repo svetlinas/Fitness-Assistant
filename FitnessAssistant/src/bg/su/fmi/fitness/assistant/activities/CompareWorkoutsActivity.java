@@ -7,7 +7,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -18,6 +17,7 @@ import bg.su.fmi.fitness.assistant.entities.Score;
 import bg.su.fmi.fitness.assistant.storage.ExersizesDataSourse;
 import bg.su.fmi.fitness.assistant.storage.ScoresDataSourse;
 import bg.su.fmi.fitness.assistant.util.Tools;
+import bg.su.fmi.fitness.assistant.util.WorkoutComparator;
 
 public class CompareWorkoutsActivity extends Activity {
 
@@ -91,25 +91,29 @@ public class CompareWorkoutsActivity extends Activity {
 		// Add Weights
 		TableRow rowWeights = new TableRow(this);
 		TextView weightFirst = new TextView(this);
-		weightFirst.setText("Weight: " + first.getWeight());
+		weightFirst.setText("Weight: " + first.getWeight() + " kg.");
+		weightFirst.setTextColor(WorkoutComparator.getWeightColor(
+				first.getWeight(), second.getWeight()));
 		TextView weightSecond = new TextView(this);
-		weightSecond.setText("Weight: " + second.getWeight());
+		weightSecond.setText("Weight: " + second.getWeight() + " kg.");
 		rowWeights.addView(weightFirst);
 		rowWeights.addView(weightSecond);
 
 		// Add Time
 		TableRow rowTimes = new TableRow(this);
 		TextView timeFirst = new TextView(this);
-		timeFirst.setText("Time: " + /*TODO first.getTime()*/ 125 + " secs.");
+		timeFirst.setText("Time: " + first.getTime() + " secs.");
+		timeFirst.setTextColor(WorkoutComparator.getTimeColor(first.getTime(),
+				second.getTime()));
 		TextView timeSecond = new TextView(this);
 		timeSecond.setText("Time: " + second.getTime() + " secs.");
 		rowTimes.addView(timeFirst);
 		rowTimes.addView(timeSecond);
 
 		nameSecond.setPadding(10, 0, 0, 0);
-		weightFirst.setPadding(10, 0, 0, 0);
-		timeFirst.setPadding(10, 0, 0, 0);
-		
+		weightSecond.setPadding(10, 0, 0, 0);
+		timeSecond.setPadding(10, 0, 0, 0);
+
 		table.addView(rowNames);
 		table.addView(rowWeights);
 		table.addView(rowTimes);

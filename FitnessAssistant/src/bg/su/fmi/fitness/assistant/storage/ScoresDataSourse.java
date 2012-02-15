@@ -57,13 +57,13 @@ public class ScoresDataSourse {
 	}
 
 	public void addScore(long workoutId, long exersizeId, int setNumber,
-			double weight, Date time, Date created) {
+			double weight, long time, Date created) {
 		final ContentValues values = new ContentValues();
 		values.put(COLUMN_WORKOUT_ID, workoutId);
 		values.put(COLUMN_EXERSIZE_ID, exersizeId);
 		values.put(COLUMN_SET_NUMBER, setNumber);
 		values.put(COLUMN_WEIGHT, weight);
-		values.put(COLUMN_TIME, new SimpleDateFormat().format(time));
+		values.put(COLUMN_TIME, time);
 		values.put(COLUMN_CREATED, new SimpleDateFormat().format(created));
 		database.insert(TABLE_NAME, null, values);
 	}
@@ -78,7 +78,7 @@ public class ScoresDataSourse {
 		final List<Score> scores = new ArrayList<Score>();
 		final Cursor cursor = database.query(TABLE_NAME, allColumns,
 				COLUMN_CREATED + "=?",
-				new String[] { new SimpleDateFormat().format(date) }, null, null, null); //TODO: Maybe sql data
+				new String[] { new SimpleDateFormat().format(date) }, null, null, null); 
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
 			final Score score = getScore(cursor);
@@ -107,11 +107,11 @@ public class ScoresDataSourse {
 	}
 
 	private Score getScore(Cursor cursor) {
-		Date time = null;
+		long time = 0;
 		Date created = null;
 		try {
 			final SimpleDateFormat formatter = new SimpleDateFormat();
-			time = formatter.parse(cursor.getString(5));
+			time = (long) cursor.getInt(5);
 			created = formatter.parse(cursor.getString(6));
 		} catch (ParseException e) {
 			e.printStackTrace();

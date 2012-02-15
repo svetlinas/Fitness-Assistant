@@ -24,7 +24,7 @@ public class ScoresSQLiteHelper {
 			+ COLUMN_WORKOUT_ID + " integer not null, " + COLUMN_EXERSIZE_ID
 			+ " integer not null, " + COLUMN_SET_NUMBER + " integer not null, "
 			+ COLUMN_WEIGHT + " double not null, " + COLUMN_TIME
-			+ " date not null, " + COLUMN_CREATED
+			+ " integer not null, " + COLUMN_CREATED
 			+ " date not null, foreign key (" + COLUMN_WORKOUT_ID
 			+ ") REFERENCES " + WorkoutsExersizesSQLiteHelper.TABLE_NAME + " ("
 			+ WorkoutsExersizesSQLiteHelper.COLUMN_ID + "), foreign key ("
