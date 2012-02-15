@@ -113,7 +113,7 @@ public class WorkoutsDataSourse {
 	}
 	
 	private SearchedObject getSearchedObject(Cursor cursor) {
-		return new SearchedObject(cursor.getString(4), cursor.getLong(1), "Workout");
+		return new SearchedObject(cursor.getString(4), cursor.getLong(0), "Workout");
 	}
 	
 	
