@@ -11,5 +11,11 @@
     <string name="new_exercise_name">New Exercise</string>
     <string name="view_exercises_button">Exercises</string>
     <string name="new_diet_name">New Diet</string>
+    <string name="timer_title">Timer</string>
+	<string name="timer_play">Timer play button</string>
+    <string name="timer_stop">Timer stop button</string>
+    <string name="timer_time_label">Time:</string>
+    <string name="timer_weight_label">Enter weight:</string>
+    <string name="timer_ok_button">OK</string>
 
 </resources>

@@ -6,5 +6,12 @@
         <item name="android:layout_height">60dp</item>
         <item name="android:clickable">true</item>
     </style>
+    
+    <style name="timer_button">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:clickable">true</item>
+    </style>
 
 </resources>

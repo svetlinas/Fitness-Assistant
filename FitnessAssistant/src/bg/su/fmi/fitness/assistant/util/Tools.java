@@ -63,24 +63,27 @@ public final class Tools {
 	public static final int START_TIMER_EXERCISE_REQUEST_CODE = 7;
 
 	public static final int EDIT_DAY_REQUEST_CODE = 104;
-	
+
 	public static final String SCORES_CREATED_EXTRA = "scoresCreated";
-	
-	public static final String OLD_SCORES_CREATED_EXTRA = "oldScoresCreated"; 
+
+	public static final String OLD_SCORES_CREATED_EXTRA = "oldScoresCreated";
 
 	public static final String WORKOUT_ID_EXTRA = "workoutId";
-	
+
+	public static final String TIMER_TIME_EXTRA = "timerTime";
+
+	public static final String TIMER_WEIGHT_EXTRA = "timerWeight";
+
 	public static final String EDIT_WORKOUT_EXTRA = "editWorkout";
 	public static final String EDIT_DAY_EXTRA = "editDay";
 	public static final String EDIT_WORKOUT_DAYS_EXTRA = "editWorkoutDays";
 	public static final String EDITED_WORKOUT_DAYS_EXTRA = "editedWorkoutDaysExtra";
 	public static final String EDITED_DAY_EXTRA = "editedDay";
-	
-	
+
 	public static final int AUDIO_TRACKS_RESULT_CODE = 200;
-	
+
 	public static final int NO_AUDIO_TRACKS_RESULT_CODE = 201;
-	
+
 	private Tools() {
 		// no instances
 	}

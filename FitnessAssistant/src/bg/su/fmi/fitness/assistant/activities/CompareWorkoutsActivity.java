@@ -100,9 +100,9 @@ public class CompareWorkoutsActivity extends Activity {
 		// Add Time
 		TableRow rowTimes = new TableRow(this);
 		TextView timeFirst = new TextView(this);
-		timeFirst.setText("Time: " + /*TODO first.getTime()*/ 125);
+		timeFirst.setText("Time: " + /*TODO first.getTime()*/ 125 + " secs.");
 		TextView timeSecond = new TextView(this);
-		timeSecond.setText("Time: " + second.getTime());
+		timeSecond.setText("Time: " + second.getTime() + " secs.");
 		rowTimes.addView(timeFirst);
 		rowTimes.addView(timeSecond);
 

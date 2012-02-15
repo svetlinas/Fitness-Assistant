@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+	<TextView
+        android:id="@+id/timer_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="24pt"
+        android:text="@string/timer_title"/>
+	<Chronometer
+	    android:id="@+id/timer_chronometer"
+	    android:layout_width="220dp"
+	    android:layout_height="100dp"
+	    android:layout_gravity="center_horizontal"
+	    android:layout_marginTop="80dp"
+	    android:visibility="visible"
+	    android:textSize="40pt" />
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/timer_buttons"
+        android:layout_width="180dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+     	android:visibility="visible"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal" >
+     
+        <ImageButton
+            style="@style/timer_button"
+            android:contentDescription="@+id/timer_play"
+            android:background="@drawable/play_button"
+            android:onClick="startTimer" />
+         
+       <ImageButton
+            style="@style/timer_button"
+            android:contentDescription="@+id/timer_stop"
+            android:background="@drawable/stop_button"
+            android:onClick="stopTimer" />
+ 
+    </LinearLayout>
+
+    <LinearLayout 
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/timer_stats"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="50dp"
+     	android:visibility="gone"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical" >
+        
+	    <TextView
+	        android:id="@+id/timer_time_label"
+	        android:layout_width="fill_parent"
+	       	android:layout_height="wrap_content"
+	        android:text="@string/timer_time_label" />
+	    
+	    <TextView
+	        android:id="@+id/timer_time_value"
+	        android:layout_width="fill_parent"
+	       	android:layout_height="wrap_content" 
+	       	android:textSize="18pt" />
+	    
+	    <TextView
+	        android:id="@+id/timer_weight_label"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:text="@string/timer_weight_label" />
+	    
+	    <EditText
+	        android:id="@+id/timer_weight_field"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:inputType="numberDecimal"
+	        android:numeric="decimal" />
+	
+	    <Button
+	        android:id="@+id/timer_ok_button"
+	        android:layout_width="82dp"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:layout_gravity="center_horizontal"
+	        android:text="@string/timer_ok_button"
+	        android:onClick="okButtonClick" />
+        
+    </LinearLayout>
+    
+</LinearLayout>

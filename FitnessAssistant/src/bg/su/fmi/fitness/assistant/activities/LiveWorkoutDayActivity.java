@@ -104,10 +104,9 @@ public class LiveWorkoutDayActivity extends Activity {
 
 	private void startTimerWeightActivity() {
 		// TODO: start appropriate timer weight activity here
-		// Intent intent = new Intent(this, TimerWeightActivity.class);
-		// startActivityForResult(intent,
-		// Tools.START_TIMER_EXERCISE_REQUEST_CODE);
-		fake();
+		Intent intent = new Intent(this, TimerActivity.class);
+		startActivityForResult(intent, Tools.START_TIMER_EXERCISE_REQUEST_CODE);
+		// fake();
 	}
 
 	private void fake() { // TODO change with timer activity
@@ -122,13 +121,21 @@ public class LiveWorkoutDayActivity extends Activity {
 		super.onActivityResult(requestCode, resultCode, data);
 		if (resultCode == RESULT_OK
 				&& requestCode == Tools.START_TIMER_EXERCISE_REQUEST_CODE) {
-			Double maxWeight = data.getDoubleExtra("maxWeight", -1); // TODO:
-																		// Change
-			Long time = data.getLongExtra("timeExercise", -1); // TODO: Change
+			Long maxWeight = Long.parseLong(data
+					.getStringExtra(Tools.TIMER_WEIGHT_EXTRA));
+			Long time = data.getLongExtra(Tools.TIMER_TIME_EXTRA, -1);
 
 			// TODO: Check 0 params and new Date(time)
 			scores.add(new Score(0, workout.getId(), currentExercise.getId(),
-					0, maxWeight, new Date(time), created)); //TODO new Date(time) should be something else. Also change the time in the DB to be long or so
+					0, (double) maxWeight, new Date(time), created)); // TODO new
+																// Date(time)
+																// should be
+																// something
+																// else. Also
+																// change the
+																// time in the
+																// DB to be long
+																// or so
 
 			if (currentExerciseNum < exercisesForDay.size()) {
 				// If there are more exercises -> get the next one and reload UI

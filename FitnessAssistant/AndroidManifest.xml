@@ -42,6 +42,7 @@
         <activity android:name=".activities.LiveWorkoutDayActivity" />
         <activity android:name=".activities.ListWorkoutsTypeActivity" />
         <activity android:name=".activities.CompareWorkoutsActivity" />
+        <activity android:name=".activities.TimerActivity" />
         <activity
             android:name=".activities.DietsActivity"
             android:label="@string/diets_name" />
