@@ -73,6 +73,10 @@ public final class Tools {
 	public static final String TIMER_TIME_EXTRA = "timerTime";
 
 	public static final String TIMER_WEIGHT_EXTRA = "timerWeight";
+	
+	public static final String IS_COMPARED_EXTRA = "isCompared";
+	
+	public static final int COMPARE_WORKOUTS_REQUEST_CODE = 202;
 
 	public static final String EDIT_WORKOUT_EXTRA = "editWorkout";
 	public static final String EDIT_DAY_EXTRA = "editDay";

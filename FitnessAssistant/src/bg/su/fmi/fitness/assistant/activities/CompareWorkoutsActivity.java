@@ -21,6 +21,8 @@ import bg.su.fmi.fitness.assistant.util.WorkoutComparator;
 
 public class CompareWorkoutsActivity extends Activity {
 
+	Intent intent;
+
 	private ScoresDataSourse scoresDataSource;
 
 	private ExersizesDataSourse exercisesDataSource;
@@ -44,7 +46,7 @@ public class CompareWorkoutsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.compare_results);
 
-		Intent intent = getIntent();
+		intent = getIntent();
 		Date created = (Date) intent
 				.getSerializableExtra(Tools.SCORES_CREATED_EXTRA);
 		Date oldCreated = (Date) intent
@@ -120,6 +122,8 @@ public class CompareWorkoutsActivity extends Activity {
 	}
 
 	public void okButtonClicked(View view) {
+		intent.putExtra(Tools.IS_COMPARED_EXTRA, true);
+		setResult(RESULT_OK, intent);
 		finish();
 	}
 

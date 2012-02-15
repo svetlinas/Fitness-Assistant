@@ -138,8 +138,18 @@ public class LiveWorkoutDayActivity extends Activity {
 				Intent intent = new Intent(this, ListWorkoutsTypeActivity.class);
 				intent.putExtra(Tools.SCORES_CREATED_EXTRA, created);
 				intent.putExtra(Tools.WORKOUT_ID_EXTRA, workout.getId());
-				startActivity(intent);
+				startActivityForResult(intent,
+						Tools.COMPARE_WORKOUTS_REQUEST_CODE);
 			}
+		}
+		if (resultCode == RESULT_OK
+				&& requestCode == Tools.COMPARE_WORKOUTS_REQUEST_CODE) {
+			boolean isCompared = data.getBooleanExtra(Tools.IS_COMPARED_EXTRA,
+					false);
+			if (isCompared) {
+				finish();
+			}
+
 		}
 	}
 

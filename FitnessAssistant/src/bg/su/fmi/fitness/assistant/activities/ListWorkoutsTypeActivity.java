@@ -18,6 +18,8 @@ import bg.su.fmi.fitness.assistant.util.Tools;
 
 public class ListWorkoutsTypeActivity extends ListActivity {
 
+	Intent intent;
+
 	private ArrayAdapter<Date> arrayAdapter;
 
 	private ScoresDataSourse scoresDataSource;
@@ -37,7 +39,7 @@ public class ListWorkoutsTypeActivity extends ListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		Intent intent = getIntent();
+		intent = getIntent();
 		created = (Date) intent
 				.getSerializableExtra(Tools.SCORES_CREATED_EXTRA);
 		long workoutId = intent.getLongExtra(Tools.WORKOUT_ID_EXTRA, -1);
@@ -76,7 +78,22 @@ public class ListWorkoutsTypeActivity extends ListActivity {
 		Intent intent = new Intent(this, CompareWorkoutsActivity.class);
 		intent.putExtra(Tools.SCORES_CREATED_EXTRA, created);
 		intent.putExtra(Tools.OLD_SCORES_CREATED_EXTRA, oldDate);
-		startActivity(intent);
+		startActivityForResult(intent, Tools.COMPARE_WORKOUTS_REQUEST_CODE);
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if (resultCode == RESULT_OK
+				&& requestCode == Tools.COMPARE_WORKOUTS_REQUEST_CODE) {
+			boolean isCompared = data.getBooleanExtra(Tools.IS_COMPARED_EXTRA,
+					false);
+			if (isCompared) {
+				intent.putExtra(Tools.IS_COMPARED_EXTRA, true);
+				setResult(RESULT_OK, intent);
+				finish();
+			}
+		}
 	}
 
 }
